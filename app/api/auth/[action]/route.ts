@@ -1,0 +1,151 @@
+import { authClient, requireUser } from "../../../../lib/auth";
+import { config, initialize } from "../../../../lib/database";
+import {
+  sameOrigin,
+  rateLimit,
+  jsonBody,
+  errorResponse,
+  HttpError,
+} from "../../../../lib/security";
+import { z } from "zod";
+export async function POST(
+  req: Request,
+  { params }: { params: Promise<{ action: string }> },
+) {
+  try {
+    sameOrigin(req);
+    await initialize();
+    await rateLimit(req, "auth", 8);
+    const { action } = await params;
+    if (action === "factors") {
+      const user = await requireUser();
+      if (user.role !== "admin")
+        throw new HttpError(403, "Administrator access required.");
+      const client = await authClient();
+      const { data, error } = await client.auth.mfa.listFactors();
+      if (error)
+        throw new HttpError(400, "Unable to load verification methods.");
+      return Response.json({
+        factors: data.totp
+          .filter((f) => f.status === "verified")
+          .map((f) => ({ id: f.id, name: f.friendly_name || "Authenticator" })),
+      });
+    }
+    const b = await jsonBody(req);
+    const client = await authClient();
+    let result;
+    if (action === "login") {
+      const v = z
+        .object({ email: z.string().email(), password: z.string().min(1) })
+        .parse(b);
+      result = await client.auth.signInWithPassword(v);
+    } else if (action === "register") {
+      const v = z
+        .object({
+          email: z.string().email(),
+          password: z
+            .string()
+            .min(8)
+            .regex(/[A-Z]/)
+            .regex(/[a-z]/)
+            .regex(/\d/)
+            .regex(/[^a-zA-Z0-9]/),
+          name: z.string().min(2).max(100),
+          phone: z.string().regex(/^[6-9]\d{9}$/),
+          agree: z.literal(true),
+        })
+        .parse(b);
+      result = await client.auth.signUp({
+        email: v.email,
+        password: v.password,
+        options: {
+          data: { full_name: v.name, phone: v.phone },
+          emailRedirectTo: config("APP_URL") + "/auth/callback",
+        },
+      });
+    } else if (action === "forgot-password") {
+      const v = z.object({ email: z.string().email() }).parse(b);
+      result = await client.auth.resetPasswordForEmail(v.email, {
+        redirectTo: config("APP_URL") + "/auth/callback?next=/account/security",
+      });
+    } else if (action === "logout") {
+      result = await client.auth.signOut();
+    } else if (action === "password") {
+      const v = z
+        .object({
+          password: z
+            .string()
+            .min(8)
+            .regex(/[A-Z]/)
+            .regex(/[a-z]/)
+            .regex(/\d/)
+            .regex(/[^a-zA-Z0-9]/),
+        })
+        .parse(b);
+      result = await client.auth.updateUser({ password: v.password });
+    } else if (action === "otp") {
+      const v = z
+        .object({ phone: z.string().regex(/^\+91[6-9]\d{9}$/) })
+        .parse(b);
+      result = await client.auth.signInWithOtp({ phone: v.phone });
+    } else if (action === "verify") {
+      const v = z
+        .object({ phone: z.string(), token: z.string().regex(/^\d{6}$/) })
+        .parse(b);
+      result = await client.auth.verifyOtp({ ...v, type: "sms" });
+    } else if (action === "mfa-enroll") {
+      result = await client.auth.mfa.enroll({
+        factorType: "totp",
+        friendlyName: "INShop authenticator",
+      });
+      if (result.error) throw new HttpError(400, result.error.message);
+      return Response.json(result.data);
+    } else if (action === "mfa-verify") {
+      const v = z
+        .object({
+          factorId: z.string().uuid(),
+          code: z.string().regex(/^\d{6}$/),
+        })
+        .parse(b);
+      result = await client.auth.mfa.challengeAndVerify(v);
+    } else throw new HttpError(404, "Action not found");
+    if (result.error)
+      throw new HttpError(
+        400,
+        action === "login"
+          ? "Email or password is incorrect, or your email has not been verified."
+          : result.error.message,
+      );
+    return Response.json({
+      ok: true,
+      message:
+        action === "register"
+          ? "Check your email to verify your account."
+          : action === "forgot-password"
+            ? "If an account exists, a reset email is on its way."
+            : "Done",
+    });
+  } catch (e) {
+    return errorResponse(e);
+  }
+}
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ action: string }> },
+) {
+  try {
+    const { action } = await params;
+    if (action !== "google") throw new HttpError(404, "Not found");
+    await rateLimit(req, "oauth", 10);
+    const client = await authClient();
+    const { data, error } = await client.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: config("APP_URL") + "/auth/callback" },
+    });
+    if (error || !data.url)
+      throw new HttpError(400, "Google sign-in could not be started.");
+    return Response.redirect(data.url, 302);
+  } catch (e) {
+    return errorResponse(e);
+  }
+}

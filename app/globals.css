@@ -1,0 +1,423 @@
+@import "tailwindcss";
+/* INShop: structured marketplace surfaces, navy ink and warm gold. */
+:root {
+  --background: #f7f8fa;
+  --foreground: #192533;
+  --card: #fff;
+  --primary: #182b3d;
+  --accent: #edaa3f;
+  --muted: #697582;
+  --border: #e3e7eb;
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+select {
+  outline-offset: 4px;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  color: inherit;
+}
+img {
+  max-width: 100%;
+  object-fit: contain;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 56px;
+  line-height: 1.06;
+  letter-spacing: -2px;
+}
+h2 {
+  font-size: 28px;
+  letter-spacing: -0.7px;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.announcement {
+  background: #182b3d;
+  color: white;
+  text-align: center;
+  padding: 9px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+.announcement b {
+  color: #f7c774;
+  margin-left: 18px;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  padding: 24px 4%;
+  background: var(--card);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  white-space: nowrap;
+}
+.logo span {
+  background: #e8a63b;
+  font-size: 17px;
+  padding: 7px 5px 3px;
+  border-radius: 4px;
+  letter-spacing: -1px;
+  color: #162a3a;
+  border-top: 3px solid #162a3a;
+}
+.logo i {
+  font-size: 12px;
+  align-self: flex-start;
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.location strong {
+  display: block;
+  font-size: 13px;
+}
+header > a:not(.logo) {
+  font-size: 13px;
+}
+.search {
+  display: flex;
+  flex: 1;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.search input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: none;
+  padding: 13px;
+  outline: none;
+}
+.search button {
+  background: #edaa3f;
+  padding: 0 17px;
+  color: #182b3d;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 4%;
+  background: var(--card);
+  border-block: 1px solid var(--border);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: auto;
+}
+nav a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.accent {
+  color: #a45c00;
+  font-weight: 700;
+}
+.wrap {
+  max-width: 1480px;
+  margin: auto;
+  padding: 28px 4% 65px;
+}
+.hero {
+  min-height: 345px;
+  background: #e8eef0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 42px 5%;
+  position: relative;
+  overflow: hidden;
+}
+.hero > div:first-child {
+  z-index: 1;
+  width: 48%;
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  margin-bottom: 12px;
+}
+.hero p {
+  font-size: 16px;
+  color: #51616b;
+  margin: 18px 0 23px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  background: #182b3d;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.hero small {
+  display: block;
+  color: #566471;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.hero > img {
+  position: absolute;
+  height: 340px;
+  width: 38%;
+  right: 13%;
+  filter: drop-shadow(0 20px 12px #17263220);
+  transform: rotate(-13deg);
+}
+.hero-note {
+  position: absolute;
+  right: 3%;
+  bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+.hero-note span {
+  font-size: 12px;
+  letter-spacing: 1.3px;
+}
+.hero-note b {
+  font-size: 20px;
+  margin: 4px 0 10px;
+}
+.benefits {
+  display: flex;
+  justify-content: space-around;
+  gap: 14px;
+  margin: 22px 0 35px;
+  border-bottom: 1px solid var(--border);
+  padding: 0 0 24px;
+  font-size: 14px;
+}
+.benefits span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.benefits svg {
+  width: 20px;
+  color: #74877b;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 21px;
+}
+.section-heading a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+}
+.section-heading .eyebrow {
+  color: #7a6753;
+  margin-bottom: 5px;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.product {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+}
+.product-image {
+  height: 205px;
+  background: #f3f5f7;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-image img {
+  height: 90%;
+  width: 90%;
+  transition: transform 0.2s;
+}
+.product:hover img {
+  transform: scale(1.04);
+}
+.product h3 {
+  margin: 7px 0 12px;
+}
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+footer {
+  background: #192d3f;
+  color: white;
+  padding: 40px 5%;
+  font-size: 14px;
+}
+footer p {
+  color: #b7c3ce;
+  margin-top: 12px;
+}
+@media (max-width: 900px) {
+  header {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .location {
+    display: none;
+  }
+  .search {
+    order: 5;
+    flex-basis: 100%;
+  }
+  header > a:nth-last-child(3) {
+    margin-left: auto;
+  }
+  nav {
+    justify-content: flex-start;
+  }
+  .hero-note {
+    display: none;
+  }
+  .hero > img {
+    right: 0;
+    width: 48%;
+  }
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  h1 {
+    font-size: 42px;
+  }
+  .benefits {
+    flex-wrap: wrap;
+  }
+  .benefits span {
+    width: 45%;
+  }
+}
+@media (max-width: 500px) {
+  .announcement {
+    font-size: 12px;
+  }
+  .announcement b {
+    display: none;
+  }
+  header {
+    padding: 16px 5%;
+  }
+  .logo {
+    font-size: 25px;
+  }
+  .wrap {
+    padding-top: 17px;
+  }
+  .hero {
+    min-height: 330px;
+    padding: 26px 7%;
+    align-items: start;
+  }
+  .hero > div:first-child {
+    width: 65%;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+  .hero > img {
+    top: 95px;
+    right: -30px;
+    height: 210px;
+    width: 55%;
+    opacity: 0.85;
+  }
+  .hero .button {
+    position: relative;
+    font-size: 12px;
+  }
+  .hero small {
+    max-width: 150px;
+  }
+  .eyebrow {
+    font-size: 12px;
+  }
+  .benefits {
+    font-size: 12px;
+  }
+  .products {
+    gap: 10px;
+  }
+  .product {
+    padding: 10px;
+  }
+  .product-image {
+    height: 150px;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  .product h3 {
+    font-size: 14px;
+  }
+}

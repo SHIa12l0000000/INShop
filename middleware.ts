@@ -1,0 +1,2 @@
+import {NextResponse,type NextRequest} from 'next/server';
+export function middleware(req:NextRequest){const r=NextResponse.next();r.headers.set('X-Content-Type-Options','nosniff');r.headers.set('Referrer-Policy','strict-origin-when-cross-origin');r.headers.set('Permissions-Policy','camera=(), microphone=(), geolocation=()');r.headers.set('X-Frame-Options','SAMEORIGIN');if(req.nextUrl.pathname.startsWith('/api/')||/^\/(account|admin|checkout|login|auth)/.test(req.nextUrl.pathname))r.headers.set('Cache-Control','no-store');return r;}

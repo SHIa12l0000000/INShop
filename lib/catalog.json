@@ -1,0 +1,3483 @@
+[
+  {
+    "id": "prd-1",
+    "slug": "essence-mascara-lash-princess",
+    "title": "Essence Mascara Lash Princess",
+    "brand": "Essence",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "price": 82900,
+    "mrp": 93000,
+    "rating": 2.56,
+    "reviews": 142,
+    "stock": 99,
+    "sku": "INS-BEA-ESS-ESS-001",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Essence",
+      "Weight": "4 kg",
+      "Dimensions": "15.14 × 13.08 × 22.99 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "beauty",
+      "mascara"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-2",
+    "slug": "eyeshadow-palette-with-mirror",
+    "title": "Eyeshadow Palette with Mirror",
+    "brand": "Glamour Beauty",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+    "price": 165900,
+    "mrp": 203000,
+    "rating": 2.86,
+    "reviews": 142,
+    "stock": 34,
+    "sku": "INS-BEA-GLA-EYE-002",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Glamour Beauty",
+      "Weight": "9 kg",
+      "Dimensions": "9.26 × 22.47 × 27.67 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "beauty",
+      "eyeshadow"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-3",
+    "slug": "powder-canister",
+    "title": "Powder Canister",
+    "brand": "Velvet Touch",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
+    "price": 123900,
+    "mrp": 138000,
+    "rating": 4.64,
+    "reviews": 142,
+    "stock": 89,
+    "sku": "INS-BEA-VEL-POW-003",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/beauty/powder-canister/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/powder-canister/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Velvet Touch",
+      "Weight": "8 kg",
+      "Dimensions": "29.27 × 27.93 × 20.59 cm",
+      "Warranty": "3 months warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "beauty",
+      "face powder"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-4",
+    "slug": "red-lipstick",
+    "title": "Red Lipstick",
+    "brand": "Chic Cosmetics",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+    "price": 107900,
+    "mrp": 123000,
+    "rating": 4.36,
+    "reviews": 142,
+    "stock": 91,
+    "sku": "INS-BEA-CHI-LIP-004",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/thumbnail.webp",
+    "discount": 12,
+    "status": "active",
+    "specs": {
+      "Brand": "Chic Cosmetics",
+      "Weight": "1 kg",
+      "Dimensions": "18.11 × 28.38 × 22.17 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "beauty",
+      "lipstick"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-6",
+    "slug": "calvin-klein-ck-one",
+    "title": "Calvin Klein CK One",
+    "brand": "Calvin Klein",
+    "category": "Fragrances",
+    "categorySlug": "fragrances",
+    "description": "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
+    "price": 414900,
+    "mrp": 423000,
+    "rating": 4.37,
+    "reviews": 142,
+    "stock": 29,
+    "sku": "INS-FRA-CAL-CAL-006",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/1.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/2.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/thumbnail.webp",
+    "discount": 2,
+    "status": "active",
+    "specs": {
+      "Brand": "Calvin Klein",
+      "Weight": "7 kg",
+      "Dimensions": "29.36 × 27.76 × 20.72 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "fragrances",
+      "perfumes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-7",
+    "slug": "chanel-coco-noir-eau-de",
+    "title": "Chanel Coco Noir Eau De",
+    "brand": "Chanel",
+    "category": "Fragrances",
+    "categorySlug": "fragrances",
+    "description": "Coco Noir by Chanel is an elegant and mysterious fragrance, featuring notes of grapefruit, rose, and sandalwood. Perfect for evening occasions.",
+    "price": 1078900,
+    "mrp": 1292000,
+    "rating": 4.26,
+    "reviews": 142,
+    "stock": 58,
+    "sku": "INS-FRA-CHA-CHA-007",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/1.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/2.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/thumbnail.webp",
+    "discount": 17,
+    "status": "active",
+    "specs": {
+      "Brand": "Chanel",
+      "Weight": "7 kg",
+      "Dimensions": "24.5 × 25.7 × 25.98 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "fragrances",
+      "perfumes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-8",
+    "slug": "dior-j-adore",
+    "title": "Dior J'adore",
+    "brand": "Dior",
+    "category": "Fragrances",
+    "categorySlug": "fragrances",
+    "description": "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+    "price": 746900,
+    "mrp": 876000,
+    "rating": 3.8,
+    "reviews": 142,
+    "stock": 98,
+    "sku": "INS-FRA-DIO-DIO-008",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/1.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/2.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/thumbnail.webp",
+    "discount": 15,
+    "status": "active",
+    "specs": {
+      "Brand": "Dior",
+      "Weight": "4 kg",
+      "Dimensions": "27.67 × 28.28 × 11.83 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "fragrances",
+      "perfumes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-9",
+    "slug": "dolce-shine-eau-de",
+    "title": "Dolce Shine Eau de",
+    "brand": "Dolce & Gabbana",
+    "category": "Fragrances",
+    "categorySlug": "fragrances",
+    "description": "Dolce Shine by Dolce & Gabbana is a vibrant and fruity fragrance, featuring notes of mango, jasmine, and blonde woods. It's a joyful and youthful scent.",
+    "price": 580900,
+    "mrp": 585000,
+    "rating": 3.96,
+    "reviews": 142,
+    "stock": 4,
+    "sku": "INS-FRA-DOL-DOL-009",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/1.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/2.webp",
+      "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/thumbnail.webp",
+    "discount": 1,
+    "status": "active",
+    "specs": {
+      "Brand": "Dolce & Gabbana",
+      "Weight": "6 kg",
+      "Dimensions": "27.28 × 29.88 × 18.3 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "fragrances",
+      "perfumes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-11",
+    "slug": "annibale-colombo-bed",
+    "title": "Annibale Colombo Bed",
+    "brand": "Annibale Colombo",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
+    "price": 15769900,
+    "mrp": 17248000,
+    "rating": 4.77,
+    "reviews": 142,
+    "stock": 88,
+    "sku": "INS-FUR-ANN-ANN-011",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/2.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/thumbnail.webp",
+    "discount": 9,
+    "status": "active",
+    "specs": {
+      "Brand": "Annibale Colombo",
+      "Weight": "10 kg",
+      "Dimensions": "28.16 × 25.36 × 17.28 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "furniture",
+      "beds"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-12",
+    "slug": "annibale-colombo-sofa",
+    "title": "Annibale Colombo Sofa",
+    "brand": "Annibale Colombo",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Annibale Colombo Sofa is a sophisticated and comfortable seating option, featuring exquisite design and premium upholstery for your living room.",
+    "price": 20749900,
+    "mrp": 24241000,
+    "rating": 3.92,
+    "reviews": 142,
+    "stock": 60,
+    "sku": "INS-FUR-ANN-ANN-012",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/1.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/2.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/thumbnail.webp",
+    "discount": 14,
+    "status": "active",
+    "specs": {
+      "Brand": "Annibale Colombo",
+      "Weight": "6 kg",
+      "Dimensions": "12.75 × 20.55 × 19.06 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "furniture",
+      "sofas"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-13",
+    "slug": "bedside-table-african-cherry",
+    "title": "Bedside Table African Cherry",
+    "brand": "Furniture Co.",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Bedside Table in African Cherry is a stylish and functional addition to your bedroom, providing convenient storage space and a touch of elegance.",
+    "price": 2489900,
+    "mrp": 3077000,
+    "rating": 2.87,
+    "reviews": 142,
+    "stock": 64,
+    "sku": "INS-FUR-FUR-BED-013",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/1.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/2.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/thumbnail.webp",
+    "discount": 19,
+    "status": "active",
+    "specs": {
+      "Brand": "Furniture Co.",
+      "Weight": "2 kg",
+      "Dimensions": "13.47 × 24.99 × 27.35 cm",
+      "Warranty": "5 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "furniture",
+      "bedside tables"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-14",
+    "slug": "knoll-saarinen-executive-conference-chair",
+    "title": "Knoll Saarinen Executive Conference Chair",
+    "brand": "Knoll",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Knoll Saarinen Executive Conference Chair is a modern and ergonomic chair, perfect for your office or conference room with its timeless design.",
+    "price": 4149900,
+    "mrp": 4235000,
+    "rating": 4.88,
+    "reviews": 142,
+    "stock": 26,
+    "sku": "INS-FUR-KNO-KNO-014",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/1.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/2.webp",
+      "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/thumbnail.webp",
+    "discount": 2,
+    "status": "active",
+    "specs": {
+      "Brand": "Knoll",
+      "Weight": "10 kg",
+      "Dimensions": "13.81 × 7.5 × 5.62 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "furniture",
+      "office chairs"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-16",
+    "slug": "apple",
+    "title": "Apple",
+    "brand": "Terra Kitchen",
+    "category": "Grocery",
+    "categorySlug": "grocery",
+    "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
+    "price": 16900,
+    "mrp": 19000,
+    "rating": 4.19,
+    "reviews": 142,
+    "stock": 8,
+    "sku": "INS-GRO-BRD-APP-016",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/groceries/apple/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/apple/thumbnail.webp",
+    "discount": 13,
+    "status": "active",
+    "specs": {
+      "Brand": "Terra Kitchen",
+      "Weight": "9 kg",
+      "Dimensions": "13.66 × 11.01 × 9.73 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "fruits"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-17",
+    "slug": "beef-steak",
+    "title": "Beef Steak",
+    "brand": "Vista",
+    "category": "Grocery",
+    "categorySlug": "grocery",
+    "description": "High-quality beef steak, great for grilling or cooking to your preferred level of doneness.",
+    "price": 107900,
+    "mrp": 119000,
+    "rating": 4.47,
+    "reviews": 142,
+    "stock": 86,
+    "sku": "INS-GRO-BRD-BEE-017",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/groceries/beef-steak/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/beef-steak/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Vista",
+      "Weight": "10 kg",
+      "Dimensions": "18.9 × 5.77 × 18.57 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "meat"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-18",
+    "slug": "cat-food",
+    "title": "Cat Food",
+    "brand": "Kindred",
+    "category": "Grocery",
+    "categorySlug": "grocery",
+    "description": "Nutritious cat food formulated to meet the dietary needs of your feline friend.",
+    "price": 74900,
+    "mrp": 83000,
+    "rating": 3.13,
+    "reviews": 142,
+    "stock": 46,
+    "sku": "INS-GRO-BRD-FOO-018",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/groceries/cat-food/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/cat-food/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Kindred",
+      "Weight": "10 kg",
+      "Dimensions": "18.08 × 9.26 × 21.86 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "pet supplies",
+      "cat food"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-19",
+    "slug": "chicken-meat",
+    "title": "Chicken Meat",
+    "brand": "Everyday Co.",
+    "category": "Grocery",
+    "categorySlug": "grocery",
+    "description": "Fresh and tender chicken meat, suitable for various culinary preparations.",
+    "price": 82900,
+    "mrp": 96000,
+    "rating": 3.19,
+    "reviews": 142,
+    "stock": 97,
+    "sku": "INS-GRO-BRD-CHI-019",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/1.webp",
+      "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/2.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/thumbnail.webp",
+    "discount": 14,
+    "status": "active",
+    "specs": {
+      "Brand": "Everyday Co.",
+      "Weight": "1 kg",
+      "Dimensions": "11.03 × 22.11 × 16.01 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "meat"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-43",
+    "slug": "decoration-swing",
+    "title": "Decoration Swing",
+    "brand": "Loom & Line",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Decoration Swing is a charming addition to your home decor. Crafted with intricate details, it adds a touch of elegance and whimsy to any room.",
+    "price": 497900,
+    "mrp": 556000,
+    "rating": 3.16,
+    "reviews": 142,
+    "stock": 47,
+    "sku": "INS-HOM-BRD-DEC-043",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/1.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/2.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Loom & Line",
+      "Weight": "4 kg",
+      "Dimensions": "23.84 × 15.19 × 26.05 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "home decor",
+      "swing"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-44",
+    "slug": "family-tree-photo-frame",
+    "title": "Family Tree Photo Frame",
+    "brand": "Form Living",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Family Tree Photo Frame is a sentimental and stylish way to display your cherished family memories. With multiple photo slots, it tells the story of your loved ones.",
+    "price": 248900,
+    "mrp": 292000,
+    "rating": 4.53,
+    "reviews": 142,
+    "stock": 77,
+    "sku": "INS-HOM-BRD-FAM-044",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/home-decoration/family-tree-photo-frame/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/home-decoration/family-tree-photo-frame/thumbnail.webp",
+    "discount": 15,
+    "status": "active",
+    "specs": {
+      "Brand": "Form Living",
+      "Weight": "1 kg",
+      "Dimensions": "17.27 × 14.81 × 29.11 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "home decor",
+      "photo frame"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-45",
+    "slug": "house-showpiece-plant",
+    "title": "House Showpiece Plant",
+    "brand": "Fieldcraft",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The House Showpiece Plant is an artificial plant that brings a touch of nature to your home without the need for maintenance. It adds greenery and style to any space.",
+    "price": 331900,
+    "mrp": 359000,
+    "rating": 4.67,
+    "reviews": 142,
+    "stock": 28,
+    "sku": "INS-HOM-BRD-HOU-045",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/1.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/2.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Fieldcraft",
+      "Weight": "8 kg",
+      "Dimensions": "8.55 × 14.62 × 17.25 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "home decor",
+      "artificial plants"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-46",
+    "slug": "plant-pot",
+    "title": "Plant Pot",
+    "brand": "North & Oak",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Plant Pot is a stylish container for your favorite plants. With a sleek design, it complements your indoor or outdoor garden, adding a modern touch to your plant display.",
+    "price": 123900,
+    "mrp": 134000,
+    "rating": 3.01,
+    "reviews": 142,
+    "stock": 59,
+    "sku": "INS-HOM-BRD-PLA-046",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/1.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/2.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/3.webp",
+      "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "North & Oak",
+      "Weight": "9 kg",
+      "Dimensions": "9.83 × 20.28 × 13.49 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "home decor",
+      "plant accessories"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-48",
+    "slug": "bamboo-spatula",
+    "title": "Bamboo Spatula",
+    "brand": "Fresh Basket",
+    "category": "Kitchen",
+    "categorySlug": "kitchen",
+    "description": "The Bamboo Spatula is a versatile kitchen tool made from eco-friendly bamboo. Ideal for flipping, stirring, and serving various dishes.",
+    "price": 65900,
+    "mrp": 68000,
+    "rating": 3.27,
+    "reviews": 142,
+    "stock": 37,
+    "sku": "INS-KIT-BRD-BAM-048",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/thumbnail.webp",
+    "discount": 3,
+    "status": "active",
+    "specs": {
+      "Brand": "Fresh Basket",
+      "Weight": "3 kg",
+      "Dimensions": "21.32 × 23.03 × 25.94 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "kitchen tools",
+      "utensils"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-49",
+    "slug": "black-aluminium-cup",
+    "title": "Black Aluminium Cup",
+    "brand": "Studio Basics",
+    "category": "Kitchen",
+    "categorySlug": "kitchen",
+    "description": "The Black Aluminium Cup is a stylish and durable cup suitable for both hot and cold beverages. Its sleek black design adds a modern touch to your drinkware collection.",
+    "price": 49900,
+    "mrp": 59000,
+    "rating": 4.46,
+    "reviews": 142,
+    "stock": 75,
+    "sku": "INS-KIT-BRD-BLA-049",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/1.webp",
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/2.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/thumbnail.webp",
+    "discount": 16,
+    "status": "active",
+    "specs": {
+      "Brand": "Studio Basics",
+      "Weight": "7 kg",
+      "Dimensions": "5.88 × 5.11 × 10.03 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "drinkware",
+      "cups"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-50",
+    "slug": "black-whisk",
+    "title": "Black Whisk",
+    "brand": "Wellnest",
+    "category": "Kitchen",
+    "categorySlug": "kitchen",
+    "description": "The Black Whisk is a kitchen essential for whisking and beating ingredients. Its ergonomic handle and sleek design make it a practical and stylish tool.",
+    "price": 82900,
+    "mrp": 92000,
+    "rating": 3.9,
+    "reviews": 142,
+    "stock": 73,
+    "sku": "INS-KIT-BRD-BLA-050",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Wellnest",
+      "Weight": "1 kg",
+      "Dimensions": "13.03 × 5.99 × 20.64 cm",
+      "Warranty": "3 months warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "kitchen tools",
+      "utensils"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-51",
+    "slug": "boxed-blender",
+    "title": "Boxed Blender",
+    "brand": "Arc Home",
+    "category": "Kitchen",
+    "categorySlug": "kitchen",
+    "description": "The Boxed Blender is a powerful and compact blender perfect for smoothies, shakes, and more. Its convenient design and multiple functions make it a versatile kitchen appliance.",
+    "price": 331900,
+    "mrp": 358000,
+    "rating": 4.56,
+    "reviews": 142,
+    "stock": 9,
+    "sku": "INS-KIT-BRD-BOX-051",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/1.webp",
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/2.webp",
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/3.webp",
+      "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Arc Home",
+      "Weight": "1 kg",
+      "Dimensions": "9.05 × 19.45 × 17.59 cm",
+      "Warranty": "5 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "kitchen appliances",
+      "blenders"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-78",
+    "slug": "apple-macbook-pro-14-inch-space-grey",
+    "title": "Apple MacBook Pro 14 Inch Space Grey",
+    "brand": "Apple",
+    "category": "Computers",
+    "categorySlug": "computers",
+    "description": "The MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop, featuring Apple's M1 Pro chip for exceptional performance and a stunning Retina display.",
+    "price": 16599900,
+    "mrp": 17417000,
+    "rating": 3.65,
+    "reviews": 142,
+    "stock": 24,
+    "sku": "INS-LAP-APP-APP-078",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/1.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/2.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/thumbnail.webp",
+    "discount": 5,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "9 kg",
+      "Dimensions": "20.03 × 9.54 × 14.82 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "laptops",
+      "apple"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-79",
+    "slug": "asus-zenbook-pro-dual-screen-laptop",
+    "title": "Asus Zenbook Pro Dual Screen Laptop",
+    "brand": "Asus",
+    "category": "Computers",
+    "categorySlug": "computers",
+    "description": "The Asus Zenbook Pro Dual Screen Laptop is a high-performance device with dual screens, providing productivity and versatility for creative professionals.",
+    "price": 14939900,
+    "mrp": 16813000,
+    "rating": 3.95,
+    "reviews": 142,
+    "stock": 45,
+    "sku": "INS-LAP-ASU-ASU-079",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/2.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/thumbnail.webp",
+    "discount": 11,
+    "status": "active",
+    "specs": {
+      "Brand": "Asus",
+      "Weight": "9 kg",
+      "Dimensions": "16.6 × 11.49 × 10.89 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "laptops"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-80",
+    "slug": "huawei-matebook-x-pro",
+    "title": "Huawei Matebook X Pro",
+    "brand": "Huawei",
+    "category": "Computers",
+    "categorySlug": "computers",
+    "description": "The Huawei Matebook X Pro is a slim and stylish laptop with a high-resolution touchscreen display, offering a premium experience for users on the go.",
+    "price": 11619900,
+    "mrp": 12823000,
+    "rating": 4.98,
+    "reviews": 142,
+    "stock": 75,
+    "sku": "INS-LAP-HUA-HUA-080",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/1.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/2.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/thumbnail.webp",
+    "discount": 9,
+    "status": "active",
+    "specs": {
+      "Brand": "Huawei",
+      "Weight": "9 kg",
+      "Dimensions": "18.21 × 22.83 × 17.26 cm",
+      "Warranty": "No warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "laptops"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-81",
+    "slug": "lenovo-yoga-920",
+    "title": "Lenovo Yoga 920",
+    "brand": "Lenovo",
+    "category": "Computers",
+    "categorySlug": "computers",
+    "description": "The Lenovo Yoga 920 is a 2-in-1 convertible laptop with a flexible hinge, allowing you to use it as a laptop or tablet, offering versatility and portability.",
+    "price": 9129900,
+    "mrp": 9770000,
+    "rating": 2.86,
+    "reviews": 142,
+    "stock": 40,
+    "sku": "INS-LAP-LEN-LEN-081",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/1.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/2.webp",
+      "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Lenovo",
+      "Weight": "9 kg",
+      "Dimensions": "20.84 × 22.68 × 17.39 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "laptops"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-83",
+    "slug": "blue-black-check-shirt",
+    "title": "Blue & Black Check Shirt",
+    "brand": "Fashion Trends",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+    "price": 248900,
+    "mrp": 294000,
+    "rating": 3.64,
+    "reviews": 142,
+    "stock": 38,
+    "sku": "INS-MEN-FAS-BLU-083",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/thumbnail.webp",
+    "discount": 15,
+    "status": "active",
+    "specs": {
+      "Brand": "Fashion Trends",
+      "Weight": "4 kg",
+      "Dimensions": "27.49 × 23.73 × 28.61 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "clothing",
+      "men's shirts"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-84",
+    "slug": "gigabyte-aorus-men-tshirt",
+    "title": "Gigabyte Aorus Men Tshirt",
+    "brand": "Gigabyte",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+    "price": 206900,
+    "mrp": 209000,
+    "rating": 3.18,
+    "reviews": 142,
+    "stock": 90,
+    "sku": "INS-MEN-GIG-GIG-084",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/thumbnail.webp",
+    "discount": 1,
+    "status": "active",
+    "specs": {
+      "Brand": "Gigabyte",
+      "Weight": "4 kg",
+      "Dimensions": "22.31 × 26.47 × 13.27 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "clothing",
+      "men's t-shirts"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-85",
+    "slug": "man-plaid-shirt",
+    "title": "Man Plaid Shirt",
+    "brand": "Classic Wear",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Man Plaid Shirt is a timeless and versatile men's shirt with a classic plaid pattern. Its comfortable fit and casual style make it a wardrobe essential for various occasions.",
+    "price": 289900,
+    "mrp": 361000,
+    "rating": 3.46,
+    "reviews": 142,
+    "stock": 82,
+    "sku": "INS-MEN-CLA-PLA-085",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/thumbnail.webp",
+    "discount": 20,
+    "status": "active",
+    "specs": {
+      "Brand": "Classic Wear",
+      "Weight": "3 kg",
+      "Dimensions": "9.34 × 5.97 × 10.85 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "clothing",
+      "men's shirts"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-86",
+    "slug": "man-short-sleeve-shirt",
+    "title": "Man Short Sleeve Shirt",
+    "brand": "Casual Comfort",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Man Short Sleeve Shirt is a breezy and stylish option for warm days. With a comfortable fit and short sleeves, it's perfect for a laid-back yet polished look.",
+    "price": 165900,
+    "mrp": 178000,
+    "rating": 2.9,
+    "reviews": 142,
+    "stock": 2,
+    "sku": "INS-MEN-CAS-SHO-086",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Casual Comfort",
+      "Weight": "2 kg",
+      "Dimensions": "5.02 × 16.57 × 9.6 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "clothing",
+      "men's shirts"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-88",
+    "slug": "nike-air-jordan-1-red-and-black",
+    "title": "Nike Air Jordan 1 Red And Black",
+    "brand": "Nike",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "The Nike Air Jordan 1 in Red and Black is an iconic basketball sneaker known for its stylish design and high-performance features, making it a favorite among sneaker enthusiasts and athletes.",
+    "price": 1244900,
+    "mrp": 1298000,
+    "rating": 4.77,
+    "reviews": 142,
+    "stock": 7,
+    "sku": "INS-MEN-NIK-NIK-088",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/thumbnail.webp",
+    "discount": 4,
+    "status": "active",
+    "specs": {
+      "Brand": "Nike",
+      "Weight": "3 kg",
+      "Dimensions": "17.44 × 9.52 × 27 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "footwear",
+      "athletic shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-89",
+    "slug": "nike-baseball-cleats",
+    "title": "Nike Baseball Cleats",
+    "brand": "Nike",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "Nike Baseball Cleats are designed for maximum traction and performance on the baseball field. They provide stability and support for players during games and practices.",
+    "price": 663900,
+    "mrp": 810000,
+    "rating": 3.88,
+    "reviews": 142,
+    "stock": 12,
+    "sku": "INS-MEN-NIK-NIK-089",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Nike",
+      "Weight": "9 kg",
+      "Dimensions": "11.75 × 26.65 × 19.6 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "footwear",
+      "sports cleats"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-90",
+    "slug": "puma-future-rider-trainers",
+    "title": "Puma Future Rider Trainers",
+    "brand": "Puma",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "The Puma Future Rider Trainers offer a blend of retro style and modern comfort. Perfect for casual wear, these trainers provide a fashionable and comfortable option for everyday use.",
+    "price": 746900,
+    "mrp": 780000,
+    "rating": 4.9,
+    "reviews": 142,
+    "stock": 90,
+    "sku": "INS-MEN-PUM-PUM-090",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/thumbnail.webp",
+    "discount": 4,
+    "status": "active",
+    "specs": {
+      "Brand": "Puma",
+      "Weight": "6 kg",
+      "Dimensions": "17.45 × 15.58 × 23.13 cm",
+      "Warranty": "5 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "casual shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-91",
+    "slug": "sports-sneakers-off-white-red",
+    "title": "Sports Sneakers Off White & Red",
+    "brand": "Off White",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "The Sports Sneakers in Off White and Red combine style and functionality, making them a fashionable choice for sports enthusiasts. The red and off-white color combination adds a bold and energetic touch.",
+    "price": 995900,
+    "mrp": 1048000,
+    "rating": 4.77,
+    "reviews": 142,
+    "stock": 17,
+    "sku": "INS-MEN-OFF-SPO-091",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/thumbnail.webp",
+    "discount": 5,
+    "status": "active",
+    "specs": {
+      "Brand": "Off White",
+      "Weight": "7 kg",
+      "Dimensions": "14.37 × 23.44 × 12.84 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "athletic shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-93",
+    "slug": "brown-leather-belt-watch",
+    "title": "Brown Leather Belt Watch",
+    "brand": "Fashion Timepieces",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Brown Leather Belt Watch is a stylish timepiece with a classic design. Featuring a genuine leather strap and a sleek dial, it adds a touch of sophistication to your look.",
+    "price": 746900,
+    "mrp": 795000,
+    "rating": 4.19,
+    "reviews": 142,
+    "stock": 32,
+    "sku": "INS-MEN-FAS-BRO-093",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/thumbnail.webp",
+    "discount": 6,
+    "status": "active",
+    "specs": {
+      "Brand": "Fashion Timepieces",
+      "Weight": "10 kg",
+      "Dimensions": "16.65 × 6.15 × 20.18 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "watches",
+      "leather watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-94",
+    "slug": "longines-master-collection",
+    "title": "Longines Master Collection",
+    "brand": "Longines",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Longines Master Collection is an elegant and refined watch known for its precision and craftsmanship. With a timeless design, it's a symbol of luxury and sophistication.",
+    "price": 12449900,
+    "mrp": 15043000,
+    "rating": 3.87,
+    "reviews": 142,
+    "stock": 100,
+    "sku": "INS-MEN-LON-LON-094",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/thumbnail.webp",
+    "discount": 17,
+    "status": "active",
+    "specs": {
+      "Brand": "Longines",
+      "Weight": "4 kg",
+      "Dimensions": "15.39 × 10.06 × 20.32 cm",
+      "Warranty": "1 week warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "watches",
+      "luxury watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-95",
+    "slug": "rolex-cellini-date-black-dial",
+    "title": "Rolex Cellini Date Black Dial",
+    "brand": "Rolex",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Rolex Cellini Date with Black Dial is a classic and prestigious watch. With a black dial and date complication, it exudes sophistication and is a symbol of Rolex's heritage.",
+    "price": 74699900,
+    "mrp": 81980000,
+    "rating": 4.97,
+    "reviews": 142,
+    "stock": 40,
+    "sku": "INS-MEN-ROL-ROL-095",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/thumbnail.webp",
+    "discount": 9,
+    "status": "active",
+    "specs": {
+      "Brand": "Rolex",
+      "Weight": "2 kg",
+      "Dimensions": "13.46 × 26.1 × 17.9 cm",
+      "Warranty": "3 months warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "watches",
+      "luxury watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-96",
+    "slug": "rolex-cellini-moonphase",
+    "title": "Rolex Cellini Moonphase",
+    "brand": "Rolex",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Rolex Cellini Moonphase is a masterpiece of horology, featuring a moon phase complication and exquisite design. It reflects Rolex's commitment to precision and elegance.",
+    "price": 107899900,
+    "mrp": 130819000,
+    "rating": 2.58,
+    "reviews": 142,
+    "stock": 36,
+    "sku": "INS-MEN-ROL-ROL-096",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Rolex",
+      "Weight": "2 kg",
+      "Dimensions": "26.06 × 25.19 × 13.17 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "watches",
+      "luxury watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-99",
+    "slug": "amazon-echo-plus",
+    "title": "Amazon Echo Plus",
+    "brand": "Amazon",
+    "category": "Electronics",
+    "categorySlug": "electronics",
+    "description": "The Amazon Echo Plus is a smart speaker with built-in Alexa voice control. It features premium sound quality and serves as a hub for controlling smart home devices.",
+    "price": 829900,
+    "mrp": 944000,
+    "rating": 4.99,
+    "reviews": 142,
+    "stock": 61,
+    "sku": "INS-MOB-AMA-AMA-099",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/1.webp",
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/2.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/thumbnail.webp",
+    "discount": 12,
+    "status": "active",
+    "specs": {
+      "Brand": "Amazon",
+      "Weight": "5 kg",
+      "Dimensions": "12.68 × 15.24 × 27.46 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "electronics",
+      "smart speakers"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-100",
+    "slug": "apple-airpods",
+    "title": "Apple Airpods",
+    "brand": "Apple",
+    "category": "Electronics",
+    "categorySlug": "electronics",
+    "description": "The Apple Airpods offer a seamless wireless audio experience. With easy pairing, high-quality sound, and Siri integration, they are perfect for on-the-go listening.",
+    "price": 1078900,
+    "mrp": 1277000,
+    "rating": 4.15,
+    "reviews": 142,
+    "stock": 67,
+    "sku": "INS-MOB-APP-APP-100",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/1.webp",
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/2.webp",
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/thumbnail.webp",
+    "discount": 16,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "4 kg",
+      "Dimensions": "25.79 × 18.38 × 11.53 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "electronics",
+      "wireless earphones"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-101",
+    "slug": "apple-airpods-max-silver",
+    "title": "Apple AirPods Max Silver",
+    "brand": "Apple",
+    "category": "Electronics",
+    "categorySlug": "electronics",
+    "description": "The Apple AirPods Max in Silver are premium over-ear headphones with high-fidelity audio, adaptive EQ, and active noise cancellation. Experience immersive sound in style.",
+    "price": 4564900,
+    "mrp": 5288000,
+    "rating": 3.47,
+    "reviews": 142,
+    "stock": 59,
+    "sku": "INS-MOB-APP-APP-101",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/thumbnail.webp",
+    "discount": 14,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "2 kg",
+      "Dimensions": "24.88 × 14.9 × 27.54 cm",
+      "Warranty": "No warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "electronics",
+      "over-ear headphones"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-102",
+    "slug": "apple-airpower-wireless-charger",
+    "title": "Apple Airpower Wireless Charger",
+    "brand": "Apple",
+    "category": "Electronics",
+    "categorySlug": "electronics",
+    "description": "The Apple AirPower Wireless Charger provides a convenient way to charge your compatible Apple devices wirelessly. Simply place your devices on the charging mat for effortless charging.",
+    "price": 663900,
+    "mrp": 695000,
+    "rating": 3.68,
+    "reviews": 142,
+    "stock": 1,
+    "sku": "INS-MOB-APP-APP-102",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/thumbnail.webp",
+    "discount": 4,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "5 kg",
+      "Dimensions": "25.25 × 25.44 × 10.98 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "electronics",
+      "wireless chargers"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-113",
+    "slug": "generic-motorcycle",
+    "title": "Generic Motorcycle",
+    "brand": "Generic Motors",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The Generic Motorcycle is a versatile and reliable bike suitable for various riding preferences. With a balanced design, it provides a comfortable and efficient riding experience.",
+    "price": 33199900,
+    "mrp": 37770000,
+    "rating": 4.91,
+    "reviews": 142,
+    "stock": 34,
+    "sku": "INS-MOT-GEN-GEN-113",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/1.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/2.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/3.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/thumbnail.webp",
+    "discount": 12,
+    "status": "active",
+    "specs": {
+      "Brand": "Generic Motors",
+      "Weight": "8 kg",
+      "Dimensions": "26.23 × 14.04 × 17.87 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "motorcycles"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-114",
+    "slug": "kawasaki-z800",
+    "title": "Kawasaki Z800",
+    "brand": "Kawasaki",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The Kawasaki Z800 is a powerful and agile sportbike known for its striking design and performance. It's equipped with advanced features, making it a favorite among motorcycle enthusiasts.",
+    "price": 74699900,
+    "mrp": 82788000,
+    "rating": 3.98,
+    "reviews": 142,
+    "stock": 52,
+    "sku": "INS-MOT-KAW-KAW-114",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/1.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/2.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/3.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Kawasaki",
+      "Weight": "9 kg",
+      "Dimensions": "18.3 × 18.27 × 16.06 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "motorcycles",
+      "sportbikes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-115",
+    "slug": "motogp-ci-h1",
+    "title": "MotoGP CI.H1",
+    "brand": "MotoGP",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The MotoGP CI.H1 is a high-performance motorcycle inspired by MotoGP racing technology. It offers cutting-edge features and precision engineering for an exhilarating riding experience.",
+    "price": 124499900,
+    "mrp": 133756000,
+    "rating": 2.97,
+    "reviews": 142,
+    "stock": 10,
+    "sku": "INS-MOT-MOT-MOT-115",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/1.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/2.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/3.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "MotoGP",
+      "Weight": "1 kg",
+      "Dimensions": "19.33 × 17.31 × 12.05 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "motorcycles",
+      "sportbikes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-116",
+    "slug": "scooter-motorcycle",
+    "title": "Scooter Motorcycle",
+    "brand": "ScootMaster",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The Scooter Motorcycle is a practical and fuel-efficient bike ideal for urban commuting. It features a step-through design and user-friendly controls for easy maneuverability.",
+    "price": 24899900,
+    "mrp": 26566000,
+    "rating": 2.53,
+    "reviews": 142,
+    "stock": 84,
+    "sku": "INS-MOT-SCO-SCO-116",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/1.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/2.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/3.webp",
+      "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/thumbnail.webp",
+    "discount": 6,
+    "status": "active",
+    "specs": {
+      "Brand": "ScootMaster",
+      "Weight": "7 kg",
+      "Dimensions": "27.31 × 19.34 × 26.72 cm",
+      "Warranty": "5 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "motorcycles",
+      "scooters"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-118",
+    "slug": "attitude-super-leaves-hand-soap",
+    "title": "Attitude Super Leaves Hand Soap",
+    "brand": "Attitude",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "Attitude Super Leaves Hand Soap is a natural and nourishing hand soap enriched with the goodness of super leaves. It cleanses and moisturizes your hands, leaving them feeling fresh and soft.",
+    "price": 74900,
+    "mrp": 92000,
+    "rating": 3.19,
+    "reviews": 142,
+    "stock": 94,
+    "sku": "INS-SKI-ATT-ATT-118",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp",
+      "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/2.webp",
+      "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Attitude",
+      "Weight": "1 kg",
+      "Dimensions": "14.05 × 8.3 × 16.62 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "personal care",
+      "hand soap"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-119",
+    "slug": "olay-ultra-moisture-shea-butter-body-wash",
+    "title": "Olay Ultra Moisture Shea Butter Body Wash",
+    "brand": "Olay",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "Olay Ultra Moisture Shea Butter Body Wash is a luxurious body wash that hydrates and nourishes your skin with the moisturizing power of shea butter. Enjoy a rich lather and silky-smooth skin.",
+    "price": 107900,
+    "mrp": 129000,
+    "rating": 4.51,
+    "reviews": 142,
+    "stock": 34,
+    "sku": "INS-SKI-OLA-OLA-119",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/1.webp",
+      "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/2.webp",
+      "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/thumbnail.webp",
+    "discount": 16,
+    "status": "active",
+    "specs": {
+      "Brand": "Olay",
+      "Weight": "4 kg",
+      "Dimensions": "25.23 × 28.33 × 11.89 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "personal care",
+      "body wash"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-120",
+    "slug": "vaseline-men-body-and-face-lotion",
+    "title": "Vaseline Men Body and Face Lotion",
+    "brand": "Vaseline",
+    "category": "Beauty",
+    "categorySlug": "beauty",
+    "description": "Vaseline Men Body and Face Lotion is a specially formulated lotion designed to provide long-lasting moisture to men's skin. It absorbs quickly and helps keep the skin hydrated and healthy.",
+    "price": 82900,
+    "mrp": 96000,
+    "rating": 3.16,
+    "reviews": 142,
+    "stock": 95,
+    "sku": "INS-SKI-VAS-VAS-120",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/1.webp",
+      "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/2.webp",
+      "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/thumbnail.webp",
+    "discount": 13,
+    "status": "active",
+    "specs": {
+      "Brand": "Vaseline",
+      "Weight": "4 kg",
+      "Dimensions": "21.83 × 17.38 × 24.76 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "personal care",
+      "body lotion"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-121",
+    "slug": "iphone-5s",
+    "title": "iPhone 5s",
+    "brand": "Apple",
+    "category": "Mobiles",
+    "categorySlug": "mobiles",
+    "description": "The iPhone 5s is a classic smartphone known for its compact design and advanced features during its release. While it's an older model, it still provides a reliable user experience.",
+    "price": 1659900,
+    "mrp": 1906000,
+    "rating": 2.83,
+    "reviews": 142,
+    "stock": 25,
+    "sku": "INS-SMA-APP-IPH-121",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/1.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/2.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/thumbnail.webp",
+    "discount": 13,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "2 kg",
+      "Dimensions": "5.29 × 18.38 × 17.72 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "smartphones",
+      "apple"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-122",
+    "slug": "iphone-6",
+    "title": "iPhone 6",
+    "brand": "Apple",
+    "category": "Mobiles",
+    "categorySlug": "mobiles",
+    "description": "The iPhone 6 is a stylish and capable smartphone with a larger display and improved performance. It introduced new features and design elements, making it a popular choice in its time.",
+    "price": 2489900,
+    "mrp": 2668000,
+    "rating": 3.41,
+    "reviews": 142,
+    "stock": 60,
+    "sku": "INS-SMA-APP-IPH-122",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/1.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/2.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "7 kg",
+      "Dimensions": "11 × 9.1 × 9.67 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "smartphones",
+      "apple"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-123",
+    "slug": "iphone-13-pro",
+    "title": "iPhone 13 Pro",
+    "brand": "Apple",
+    "category": "Mobiles",
+    "categorySlug": "mobiles",
+    "description": "The iPhone 13 Pro is a cutting-edge smartphone with a powerful camera system, high-performance chip, and stunning display. It offers advanced features for users who demand top-notch technology.",
+    "price": 9129900,
+    "mrp": 10074000,
+    "rating": 4.12,
+    "reviews": 142,
+    "stock": 56,
+    "sku": "INS-SMA-APP-IPH-123",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/1.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/2.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/thumbnail.webp",
+    "discount": 9,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "8 kg",
+      "Dimensions": "12.63 × 5.28 × 14.29 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "smartphones",
+      "apple"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-124",
+    "slug": "iphone-x",
+    "title": "iPhone X",
+    "brand": "Apple",
+    "category": "Mobiles",
+    "categorySlug": "mobiles",
+    "description": "The iPhone X is a flagship smartphone featuring a bezel-less OLED display, facial recognition technology (Face ID), and impressive performance. It represents a milestone in iPhone design and innovation.",
+    "price": 7469900,
+    "mrp": 9290000,
+    "rating": 2.51,
+    "reviews": 142,
+    "stock": 37,
+    "sku": "INS-SMA-APP-IPH-124",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/1.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/2.webp",
+      "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/thumbnail.webp",
+    "discount": 20,
+    "status": "active",
+    "specs": {
+      "Brand": "Apple",
+      "Weight": "1 kg",
+      "Dimensions": "21.88 × 24.19 × 14.19 cm",
+      "Warranty": "3 months warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "smartphones",
+      "apple"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-137",
+    "slug": "american-football",
+    "title": "American Football",
+    "brand": "Daily Ritual",
+    "category": "Sports",
+    "categorySlug": "sports",
+    "description": "The American Football is a classic ball used in American football games. It is designed for throwing and catching, making it an essential piece of equipment for the sport.",
+    "price": 165900,
+    "mrp": 175000,
+    "rating": 4.91,
+    "reviews": 142,
+    "stock": 53,
+    "sku": "INS-SPO-BRD-AME-137",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/sports-accessories/american-football/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/american-football/thumbnail.webp",
+    "discount": 5,
+    "status": "active",
+    "specs": {
+      "Brand": "Daily Ritual",
+      "Weight": "2 kg",
+      "Dimensions": "6.88 × 5.82 × 21.96 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "sports equipment",
+      "american football"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-138",
+    "slug": "baseball-ball",
+    "title": "Baseball Ball",
+    "brand": "Urban Carry",
+    "category": "Sports",
+    "categorySlug": "sports",
+    "description": "The Baseball Ball is a standard baseball used in baseball games. It features a durable leather cover and is designed for pitching, hitting, and fielding in the game of baseball.",
+    "price": 74900,
+    "mrp": 76000,
+    "rating": 2.57,
+    "reviews": 142,
+    "stock": 100,
+    "sku": "INS-SPO-BRD-BAS-138",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-ball/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-ball/thumbnail.webp",
+    "discount": 2,
+    "status": "active",
+    "specs": {
+      "Brand": "Urban Carry",
+      "Weight": "5 kg",
+      "Dimensions": "14.42 × 22.65 × 15.89 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "sports equipment",
+      "baseball"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-139",
+    "slug": "baseball-glove",
+    "title": "Baseball Glove",
+    "brand": "Terra Kitchen",
+    "category": "Sports",
+    "categorySlug": "sports",
+    "description": "The Baseball Glove is a protective glove worn by baseball players. It is designed to catch and field the baseball, providing players with comfort and control during the game.",
+    "price": 206900,
+    "mrp": 214000,
+    "rating": 3.96,
+    "reviews": 142,
+    "stock": 22,
+    "sku": "INS-SPO-BRD-BAS-139",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/1.webp",
+      "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/2.webp",
+      "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/thumbnail.webp",
+    "discount": 3,
+    "status": "active",
+    "specs": {
+      "Brand": "Terra Kitchen",
+      "Weight": "1 kg",
+      "Dimensions": "23.84 × 11.12 × 5.85 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "sports equipment",
+      "baseball"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-140",
+    "slug": "basketball",
+    "title": "Basketball",
+    "brand": "Vista",
+    "category": "Sports",
+    "categorySlug": "sports",
+    "description": "The Basketball is a standard ball used in basketball games. It is designed for dribbling, shooting, and passing in the game of basketball, suitable for both indoor and outdoor play.",
+    "price": 123900,
+    "mrp": 134000,
+    "rating": 4.66,
+    "reviews": 142,
+    "stock": 75,
+    "sku": "INS-SPO-BRD-BAS-140",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/sports-accessories/basketball/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/sports-accessories/basketball/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Vista",
+      "Weight": "7 kg",
+      "Dimensions": "27.86 × 10.64 × 18.75 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "sports equipment",
+      "basketball"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-167",
+    "slug": "300-touring",
+    "title": "300 Touring",
+    "brand": "Chrysler",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The 300 Touring is a stylish and comfortable sedan, known for its luxurious features and smooth performance.",
+    "price": 240699900,
+    "mrp": 250677000,
+    "rating": 4.05,
+    "reviews": 142,
+    "stock": 54,
+    "sku": "INS-VEH-CHR-TOU-167",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/vehicle/300-touring/1.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/300-touring/2.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/300-touring/3.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/300-touring/4.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/300-touring/5.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/300-touring/6.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/thumbnail.webp",
+    "discount": 4,
+    "status": "active",
+    "specs": {
+      "Brand": "Chrysler",
+      "Weight": "9 kg",
+      "Dimensions": "19.2 × 26.17 × 17.28 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "sedans",
+      "vehicles"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-168",
+    "slug": "charger-sxt-rwd",
+    "title": "Charger SXT RWD",
+    "brand": "Dodge",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The Charger SXT RWD is a powerful and sporty rear-wheel-drive sedan, offering a blend of performance and practicality.",
+    "price": 273899900,
+    "mrp": 298463000,
+    "rating": 2.58,
+    "reviews": 142,
+    "stock": 57,
+    "sku": "INS-VEH-DOD-CHA-168",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/1.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/2.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/3.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/4.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/5.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/6.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/thumbnail.webp",
+    "discount": 8,
+    "status": "active",
+    "specs": {
+      "Brand": "Dodge",
+      "Weight": "6 kg",
+      "Dimensions": "16.77 × 23.03 × 8.18 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "sedans",
+      "sports cars",
+      "vehicles"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-169",
+    "slug": "dodge-hornet-gt-plus",
+    "title": "Dodge Hornet GT Plus",
+    "brand": "Dodge",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The Dodge Hornet GT Plus is a compact and agile hatchback, perfect for urban driving with a touch of sportiness.",
+    "price": 207499900,
+    "mrp": 213105000,
+    "rating": 2.65,
+    "reviews": 142,
+    "stock": 82,
+    "sku": "INS-VEH-DOD-DOD-169",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/1.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/2.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/3.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/4.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/5.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/6.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/thumbnail.webp",
+    "discount": 3,
+    "status": "active",
+    "specs": {
+      "Brand": "Dodge",
+      "Weight": "8 kg",
+      "Dimensions": "19.89 × 9.8 × 17.8 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "hatchbacks",
+      "compact cars",
+      "vehicles"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-170",
+    "slug": "durango-sxt-rwd",
+    "title": "Durango SXT RWD",
+    "brand": "Dodge",
+    "category": "Automotive",
+    "categorySlug": "automotive",
+    "description": "The Durango SXT RWD is a spacious and versatile SUV, known for its strong performance and family-friendly features.",
+    "price": 307099900,
+    "mrp": 367520000,
+    "rating": 4.07,
+    "reviews": 142,
+    "stock": 95,
+    "sku": "INS-VEH-DOD-DUR-170",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/1.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/2.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/3.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/4.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/5.webp",
+      "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/6.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/thumbnail.webp",
+    "discount": 16,
+    "status": "active",
+    "specs": {
+      "Brand": "Dodge",
+      "Weight": "1 kg",
+      "Dimensions": "19.02 × 29.52 × 24.36 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "suvs",
+      "vehicles"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-172",
+    "slug": "blue-women-s-handbag",
+    "title": "Blue Women's Handbag",
+    "brand": "Fashionista",
+    "category": "Bags",
+    "categorySlug": "bags",
+    "description": "The Blue Women's Handbag is a stylish and spacious accessory for everyday use. With a vibrant blue color and multiple compartments, it combines fashion and functionality.",
+    "price": 414900,
+    "mrp": 505000,
+    "rating": 2.92,
+    "reviews": 142,
+    "stock": 76,
+    "sku": "INS-WOM-FAS-BLU-172",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Fashionista",
+      "Weight": "7 kg",
+      "Dimensions": "14.12 × 11.89 × 25.69 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "fashion accessories",
+      "handbags"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-173",
+    "slug": "heshe-women-s-leather-bag",
+    "title": "Heshe Women's Leather Bag",
+    "brand": "Heshe",
+    "category": "Bags",
+    "categorySlug": "bags",
+    "description": "The Heshe Women's Leather Bag is a luxurious and high-quality leather bag for the sophisticated woman. With a timeless design and durable craftsmanship, it's a versatile accessory.",
+    "price": 1078900,
+    "mrp": 1122000,
+    "rating": 4.92,
+    "reviews": 142,
+    "stock": 99,
+    "sku": "INS-WOM-HES-HES-173",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/thumbnail.webp",
+    "discount": 4,
+    "status": "active",
+    "specs": {
+      "Brand": "Heshe",
+      "Weight": "3 kg",
+      "Dimensions": "28.66 × 20.56 × 6.62 cm",
+      "Warranty": "5 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "fashion accessories",
+      "leather bags"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-174",
+    "slug": "prada-women-bag",
+    "title": "Prada Women Bag",
+    "brand": "Prada",
+    "category": "Bags",
+    "categorySlug": "bags",
+    "description": "The Prada Women Bag is an iconic designer bag that exudes elegance and luxury. Crafted with precision and featuring the Prada logo, it's a statement piece for fashion enthusiasts.",
+    "price": 4979900,
+    "mrp": 5797000,
+    "rating": 2.71,
+    "reviews": 142,
+    "stock": 75,
+    "sku": "INS-WOM-PRA-PRA-174",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/thumbnail.webp",
+    "discount": 14,
+    "status": "active",
+    "specs": {
+      "Brand": "Prada",
+      "Weight": "4 kg",
+      "Dimensions": "21.84 × 22.19 × 13.41 cm",
+      "Warranty": "3 year warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "fashion accessories",
+      "designer bags"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-175",
+    "slug": "white-faux-leather-backpack",
+    "title": "White Faux Leather Backpack",
+    "brand": "Urban Chic",
+    "category": "Bags",
+    "categorySlug": "bags",
+    "description": "The White Faux Leather Backpack is a trendy and practical backpack for the modern woman. With a sleek white design and ample storage space, it's perfect for both casual and on-the-go styles.",
+    "price": 331900,
+    "mrp": 391000,
+    "rating": 3.36,
+    "reviews": 142,
+    "stock": 39,
+    "sku": "INS-WOM-URB-WHI-175",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/thumbnail.webp",
+    "discount": 15,
+    "status": "active",
+    "specs": {
+      "Brand": "Urban Chic",
+      "Weight": "7 kg",
+      "Dimensions": "14.31 × 23.29 × 28.91 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "fashion accessories",
+      "backpacks"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-177",
+    "slug": "black-women-s-gown",
+    "title": "Black Women's Gown",
+    "brand": "Wellnest",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Black Women's Gown is an elegant and timeless evening gown. With a sleek black design, it's perfect for formal events and special occasions, exuding sophistication and style.",
+    "price": 1078900,
+    "mrp": 1205000,
+    "rating": 3.64,
+    "reviews": 142,
+    "stock": 25,
+    "sku": "INS-WOM-BRD-BLA-177",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/thumbnail.webp",
+    "discount": 10,
+    "status": "active",
+    "specs": {
+      "Brand": "Wellnest",
+      "Weight": "2 kg",
+      "Dimensions": "7.86 × 9.02 × 25.82 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "clothing",
+      "gowns"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-178",
+    "slug": "corset-leather-with-skirt",
+    "title": "Corset Leather With Skirt",
+    "brand": "Arc Home",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Corset Leather With Skirt is a bold and edgy ensemble that combines a stylish corset with a matching skirt. Ideal for fashion-forward individuals, it makes a statement at any event.",
+    "price": 746900,
+    "mrp": 892000,
+    "rating": 3.05,
+    "reviews": 142,
+    "stock": 30,
+    "sku": "INS-WOM-BRD-COR-178",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/thumbnail.webp",
+    "discount": 16,
+    "status": "active",
+    "specs": {
+      "Brand": "Arc Home",
+      "Weight": "1 kg",
+      "Dimensions": "6.01 × 12.6 × 11.62 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "clothing",
+      "corsets",
+      "skirts"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-179",
+    "slug": "corset-with-black-skirt",
+    "title": "Corset With Black Skirt",
+    "brand": "Move Active",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Corset With Black Skirt is a chic and versatile outfit that pairs a fashionable corset with a classic black skirt. It offers a trendy and coordinated look for various occasions.",
+    "price": 663900,
+    "mrp": 782000,
+    "rating": 4.52,
+    "reviews": 142,
+    "stock": 33,
+    "sku": "INS-WOM-BRD-COR-179",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/thumbnail.webp",
+    "discount": 15,
+    "status": "active",
+    "specs": {
+      "Brand": "Move Active",
+      "Weight": "7 kg",
+      "Dimensions": "17.56 × 28.42 × 23.95 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "clothing",
+      "corsets",
+      "skirts"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-180",
+    "slug": "dress-pea",
+    "title": "Dress Pea",
+    "brand": "Daily Ritual",
+    "category": "Fashion",
+    "categorySlug": "fashion",
+    "description": "The Dress Pea is a stylish and comfortable dress with a pea pattern. Perfect for casual outings, it adds a playful and fun element to your wardrobe, making it a great choice for day-to-day wear.",
+    "price": 414900,
+    "mrp": 504000,
+    "rating": 4.88,
+    "reviews": 142,
+    "stock": 6,
+    "sku": "INS-WOM-BRD-DRE-180",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Daily Ritual",
+      "Weight": "1 kg",
+      "Dimensions": "28.51 × 20.99 × 12.58 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "clothing",
+      "dresses"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-185",
+    "slug": "black-brown-slipper",
+    "title": "Black & Brown Slipper",
+    "brand": "Comfort Trends",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "The Black & Brown Slipper is a comfortable and stylish choice for casual wear. Featuring a blend of black and brown colors, it adds a touch of sophistication to your relaxation.",
+    "price": 165900,
+    "mrp": 172000,
+    "rating": 2.53,
+    "reviews": 142,
+    "stock": 3,
+    "sku": "INS-WOM-COM-BLA-185",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/thumbnail.webp",
+    "discount": 3,
+    "status": "active",
+    "specs": {
+      "Brand": "Comfort Trends",
+      "Weight": "5 kg",
+      "Dimensions": "21.35 × 26.21 × 17 cm",
+      "Warranty": "Lifetime warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "slippers"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-186",
+    "slug": "calvin-klein-heel-shoes",
+    "title": "Calvin Klein Heel Shoes",
+    "brand": "Calvin Klein",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "Calvin Klein Heel Shoes are elegant and sophisticated, designed for formal occasions. With a classic design and high-quality materials, they complement your stylish ensemble.",
+    "price": 663900,
+    "mrp": 686000,
+    "rating": 4.92,
+    "reviews": 142,
+    "stock": 93,
+    "sku": "INS-WOM-CAL-CAL-186",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/thumbnail.webp",
+    "discount": 3,
+    "status": "active",
+    "specs": {
+      "Brand": "Calvin Klein",
+      "Weight": "6 kg",
+      "Dimensions": "29.12 × 20.94 × 20.65 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "heel shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-187",
+    "slug": "golden-shoes-woman",
+    "title": "Golden Shoes Woman",
+    "brand": "Fashion Diva",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "The Golden Shoes for Women are a glamorous choice for special occasions. Featuring a golden hue and stylish design, they add a touch of luxury to your outfit.",
+    "price": 414900,
+    "mrp": 482000,
+    "rating": 3.26,
+    "reviews": 142,
+    "stock": 88,
+    "sku": "INS-WOM-FAS-GOL-187",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/thumbnail.webp",
+    "discount": 14,
+    "status": "active",
+    "specs": {
+      "Brand": "Fashion Diva",
+      "Weight": "4 kg",
+      "Dimensions": "16.38 × 20.06 × 8.8 cm",
+      "Warranty": "6 months warranty",
+      "Return window": "7 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "women's shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-188",
+    "slug": "pampi-shoes",
+    "title": "Pampi Shoes",
+    "brand": "Pampi",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "Pampi Shoes offer a blend of comfort and style for everyday use. With a versatile design, they are suitable for various casual occasions, providing a trendy and relaxed look.",
+    "price": 248900,
+    "mrp": 290000,
+    "rating": 3.05,
+    "reviews": 142,
+    "stock": 49,
+    "sku": "INS-WOM-PAM-PAM-188",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/3.webp",
+      "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/thumbnail.webp",
+    "discount": 14,
+    "status": "active",
+    "specs": {
+      "Brand": "Pampi",
+      "Weight": "7 kg",
+      "Dimensions": "29.43 × 22.65 × 16.12 cm",
+      "Warranty": "No warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "casual shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-190",
+    "slug": "iwc-ingenieur-automatic-steel",
+    "title": "IWC Ingenieur Automatic Steel",
+    "brand": "IWC",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The IWC Ingenieur Automatic Steel watch is a durable and sophisticated timepiece. With a stainless steel case and automatic movement, it combines precision and style for watch enthusiasts.",
+    "price": 41499900,
+    "mrp": 45831000,
+    "rating": 2.93,
+    "reviews": 142,
+    "stock": 90,
+    "sku": "INS-WOM-IWC-ING-190",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/thumbnail.webp",
+    "discount": 9,
+    "status": "active",
+    "specs": {
+      "Brand": "IWC",
+      "Weight": "3 kg",
+      "Dimensions": "24.77 × 24.66 × 6.09 cm",
+      "Warranty": "1 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "watches",
+      "luxury watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-191",
+    "slug": "rolex-cellini-moonphase-191",
+    "title": "Rolex Cellini Moonphase",
+    "brand": "Rolex",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Rolex Cellini Moonphase watch is a masterpiece of horology. Featuring a moon phase complication, it showcases the craftsmanship and elegance that Rolex is renowned for.",
+    "price": 132799900,
+    "mrp": 138492000,
+    "rating": 3.83,
+    "reviews": 142,
+    "stock": 52,
+    "sku": "INS-WOM-ROL-ROL-191",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/thumbnail.webp",
+    "discount": 4,
+    "status": "active",
+    "specs": {
+      "Brand": "Rolex",
+      "Weight": "10 kg",
+      "Dimensions": "12.5 × 20.63 × 25.04 cm",
+      "Warranty": "1 month warranty",
+      "Return window": "30 days return policy"
+    },
+    "tags": [
+      "watches",
+      "luxury watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-192",
+    "slug": "rolex-datejust-women",
+    "title": "Rolex Datejust Women",
+    "brand": "Rolex",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Rolex Datejust Women's watch is an iconic timepiece designed for women. With a timeless design and a date complication, it offers both elegance and functionality.",
+    "price": 91299900,
+    "mrp": 108613000,
+    "rating": 2.86,
+    "reviews": 142,
+    "stock": 4,
+    "sku": "INS-WOM-ROL-ROL-192",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/thumbnail.webp",
+    "discount": 16,
+    "status": "active",
+    "specs": {
+      "Brand": "Rolex",
+      "Weight": "3 kg",
+      "Dimensions": "23.23 × 7.19 × 28.95 cm",
+      "Warranty": "5 year warranty",
+      "Return window": "No return policy"
+    },
+    "tags": [
+      "watches",
+      "luxury watches",
+      "women's watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-193",
+    "slug": "watch-gold-for-women",
+    "title": "Watch Gold for Women",
+    "brand": "Fashion Gold",
+    "category": "Watches",
+    "categorySlug": "watches",
+    "description": "The Gold Women's Watch is a stunning accessory that combines luxury and style. Featuring a gold-plated case and a chic design, it adds a touch of glamour to any outfit.",
+    "price": 6639900,
+    "mrp": 8131000,
+    "rating": 4.24,
+    "reviews": 142,
+    "stock": 0,
+    "sku": "INS-WOM-FAS-WAT-193",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/1.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/2.webp",
+      "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/3.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/thumbnail.webp",
+    "discount": 18,
+    "status": "active",
+    "specs": {
+      "Brand": "Fashion Gold",
+      "Weight": "1 kg",
+      "Dimensions": "18.85 × 28.59 × 7.21 cm",
+      "Warranty": "2 year warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "watches",
+      "women's watches"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-92",
+    "slug": "sports-sneakers-off-white-red-92",
+    "title": "Sports Sneakers Off White Red",
+    "brand": "Off White",
+    "category": "Footwear",
+    "categorySlug": "footwear",
+    "description": "Another variant of the Sports Sneakers in Off White Red, featuring a unique design. These sneakers offer style and comfort for casual occasions.",
+    "price": 912900,
+    "mrp": 913000,
+    "rating": 4.69,
+    "reviews": 142,
+    "stock": 62,
+    "sku": "INS-MEN-OFF-SPO-092",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/1.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/2.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/3.webp",
+      "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/4.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/thumbnail.webp",
+    "discount": 0,
+    "status": "active",
+    "specs": {
+      "Brand": "Off White",
+      "Weight": "9 kg",
+      "Dimensions": "21.43 × 9.86 × 28.5 cm",
+      "Warranty": "3 months warranty",
+      "Return window": "60 days return policy"
+    },
+    "tags": [
+      "footwear",
+      "casual shoes"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  },
+  {
+    "id": "prd-47",
+    "slug": "table-lamp",
+    "title": "Table Lamp",
+    "brand": "Fresh Basket",
+    "category": "Home & Living",
+    "categorySlug": "home-living",
+    "description": "The Table Lamp is a functional and decorative lighting solution for your living space. With a modern design, it provides both ambient and task lighting, enhancing the atmosphere.",
+    "price": 414900,
+    "mrp": 447000,
+    "rating": 3.55,
+    "reviews": 142,
+    "stock": 9,
+    "sku": "INS-HOM-BRD-TAB-047",
+    "images": [
+      "https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/1.webp"
+    ],
+    "thumbnail": "https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/thumbnail.webp",
+    "discount": 7,
+    "status": "active",
+    "specs": {
+      "Brand": "Fresh Basket",
+      "Weight": "4 kg",
+      "Dimensions": "8.98 × 13.41 × 5.65 cm",
+      "Warranty": "3 months warranty",
+      "Return window": "90 days return policy"
+    },
+    "tags": [
+      "home decor",
+      "lighting"
+    ],
+    "variants": [
+      {
+        "id": "standard",
+        "label": "Standard",
+        "delta": 0
+      }
+    ],
+    "seller": "INShop Demo Store",
+    "demo": true
+  }
+]
