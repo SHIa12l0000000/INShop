@@ -8,12 +8,10 @@ export const metadata: Metadata = {
   description:
     "Discover everyday favourites across electronics, fashion, home and more at INShop.",
   manifest: "/manifest.webmanifest",
-  other: {
-    "codex-preview": "development",
-  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
+    apple: "/brand/icon-192.png",
   },
 };
 
