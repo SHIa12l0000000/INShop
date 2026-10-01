@@ -8,6 +8,7 @@ import {
   rateLimit,
 } from "../../../../lib/security";
 import { z } from "zod";
+import { expireReservations } from "../../../../lib/order-lifecycle";
 export async function POST(req: Request) {
   try {
     sameOrigin(req);
@@ -17,6 +18,7 @@ export async function POST(req: Request) {
       .object({ orderId: z.string().uuid() })
       .parse(await jsonBody(req));
     const db = database();
+    await expireReservations(db);
     const o = await db
       .prepare(
         "SELECT * FROM orders WHERE id=? AND user_id=? AND method='razorpay' AND payment_status='pending' AND status='placed'",

@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 test("first visit skip persists; guest cart, wishlist and comparison work", async ({
   page,
 }) => {
+  test.setTimeout(60000); // This multi-route flow includes cold dev-server compilations.
   await page.goto("/");
   await page.getByRole("button", { name: "Skip for now", exact: true }).click();
   await expect(page.locator(".product")).toHaveCount(8);
@@ -72,6 +73,12 @@ test("admin demo is read only and private admin rejects visitors", async ({
   await expect(
     page.getByText("Demo workspace · Sample analytics", { exact: false }),
   ).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
   await page.goto("/admin/products");
   await expect(
     page.getByRole("heading", { name: "Secure administrator access" }),

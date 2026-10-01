@@ -1,4 +1,10 @@
-import { authClient, requireUser } from "../../../../lib/auth";
+import {
+  authClient,
+  requireUser,
+  siteAuthConfigured,
+} from "../../../../lib/auth";
+import { cookies } from "next/headers";
+import { getChatGPTUser, chatGPTSignInPath } from "../../../chatgpt-auth";
 import { config, initialize } from "../../../../lib/database";
 import {
   sameOrigin,
@@ -17,6 +23,17 @@ export async function POST(
     await initialize();
     await rateLimit(req, "auth", 8);
     const { action } = await params;
+    if (action === "logout" && (await cookies()).get("inshop-site-session")) {
+      (await cookies()).set("inshop-site-session", "", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 0,
+        expires: new Date(0),
+      });
+      return Response.json({ ok: true });
+    }
     if (action === "factors") {
       const user = await requireUser();
       if (user.role !== "admin")
@@ -135,6 +152,24 @@ export async function GET(
 ) {
   try {
     const { action } = await params;
+    if (action === "site") {
+      if (!siteAuthConfigured())
+        throw new HttpError(503, "Site sign-in is unavailable.");
+      const identity = await getChatGPTUser();
+      if (!identity)
+        return Response.redirect(
+          new URL(chatGPTSignInPath("/api/auth/site"), req.url),
+          302,
+        );
+      (await cookies()).set("inshop-site-session", "1", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 604800,
+      });
+      return Response.redirect(new URL("/account", req.url), 302);
+    }
     if (action !== "google") throw new HttpError(404, "Not found");
     await rateLimit(req, "oauth", 10);
     const client = await authClient();

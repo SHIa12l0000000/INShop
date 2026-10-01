@@ -1,12 +1,6 @@
 import { database } from "./database";
-export class HttpError extends Error {
-  constructor(
-    public status: number,
-    message: string,
-  ) {
-    super(message);
-  }
-}
+import { HttpError } from "./errors";
+export { HttpError } from "./errors";
 export function sameOrigin(req: Request) {
   const origin = req.headers.get("origin");
   if (!origin || origin !== new URL(req.url).origin)

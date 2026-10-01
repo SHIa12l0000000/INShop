@@ -41,6 +41,7 @@ type Store = {
   settings: Record<string, any>;
   banners: any[];
   authReady: boolean;
+  siteAuthReady: boolean;
   commerceReady: boolean;
   notice: string;
   notify: (s: string) => void;
@@ -85,6 +86,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     [settings, setSettings] = useState({}),
     [banners, setBanners] = useState<any[]>([]),
     [authReady, setAuthReady] = useState(false),
+    [siteAuthReady, setSiteAuthReady] = useState(false),
     [commerceReady, setCommerceReady] = useState(false),
     [notice, notify] = useState(""),
     [pin, setPinState] = useState("201001");
@@ -99,6 +101,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setSettings(d.settings);
       setBanners(d.banners);
       setAuthReady(d.authConfigured);
+      setSiteAuthReady(d.siteAuthConfigured);
       setCommerceReady(d.commerceEnabled);
       setError("");
     } catch (e) {
@@ -276,6 +279,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         settings,
         banners,
         authReady,
+        siteAuthReady,
         commerceReady,
         notice,
         notify,

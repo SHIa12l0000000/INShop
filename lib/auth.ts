@@ -3,6 +3,8 @@ import { cookies } from "next/headers";
 import { config, database } from "./database";
 import { HttpError } from "./security";
 import { hasAdminAccess } from "./policies";
+import { getChatGPTUser } from "../app/chatgpt-auth";
+export const siteAuthConfigured = () => config("SITE_AUTH_ENABLED") === "true";
 export const authConfigured = () =>
   !!(
     config("SUPABASE_URL") &&
@@ -36,6 +38,50 @@ export async function authClient() {
   );
 }
 export async function currentUser() {
+  const cookieStore = await cookies();
+  if (
+    siteAuthConfigured() &&
+    cookieStore.get("inshop-site-session")?.value === "1"
+  ) {
+    const identity = await getChatGPTUser();
+    if (!identity) return null;
+    const id = "site:" + identity.userId,
+      db = database();
+    const conflict = await db
+      .prepare("SELECT id FROM users WHERE email=? AND id!=?")
+      .bind(identity.email, id)
+      .first();
+    if (conflict)
+      throw new HttpError(
+        409,
+        "This email already uses another sign-in method. Use that method to access your existing account.",
+      );
+    await db
+      .prepare(
+        "INSERT INTO users (id,email,name,role,status,created_at,last_login_at) VALUES (?,?,?,'customer','active',?,?) ON CONFLICT(id) DO UPDATE SET last_login_at=excluded.last_login_at",
+      )
+      .bind(
+        id,
+        identity.email,
+        identity.fullName ?? identity.displayName,
+        Date.now(),
+        Date.now(),
+      )
+      .run();
+    const user = await db
+      .prepare("SELECT id,email,name,role,status FROM users WHERE id=?")
+      .bind(id)
+      .first<{
+        id: string;
+        email: string;
+        name: string;
+        role: string;
+        status: string;
+      }>();
+    return user?.status === "active"
+      ? { ...user, provider: "site" as const }
+      : null;
+  }
   if (!authConfigured()) return null;
   const client = await authClient();
   const {
@@ -66,12 +112,19 @@ export async function currentUser() {
       role: string;
       status: string;
     }>();
-  return row?.status === "active" ? row : null;
+  return row?.status === "active"
+    ? { ...row, provider: "supabase" as const }
+    : null;
 }
 export async function requireUser(admin = false) {
   const u = await currentUser();
   if (!u) throw new HttpError(401, "Please sign in to continue.");
   if (admin) {
+    if (u.provider === "site")
+      throw new HttpError(
+        403,
+        "Use the administrator sign-in method with two-factor authentication.",
+      );
     if (u.role !== "admin")
       throw new HttpError(403, "Administrator access required.");
     const client = await authClient();

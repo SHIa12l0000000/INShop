@@ -23,7 +23,13 @@ export type Product = {
   demo: boolean;
 };
 export type CartLine = { id: string; variant: string; quantity: number };
-export type User = { id: string; email: string; name: string; role: string };
+export type User = {
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+  provider?: "site" | "supabase";
+};
 export const money = (paise: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",

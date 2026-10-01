@@ -53,10 +53,25 @@ export default function AuthForm({
               ? "Check your inbox for an email verification link."
               : "Sign in for a personalized shopping experience."}
       </p>
+      {!admin && s.siteAuthReady && (
+        <>
+          <a className="button" href="/api/auth/site" target="_top">
+            Continue with ChatGPT
+          </a>
+          <p className="subtext">
+            Use your verified site account to save your profile, wishlist and
+            addresses.
+          </p>
+        </>
+      )}
       {!s.authReady && !s.loading && (
         <div className="setup-note">
-          Sign-in is not available yet. Authentication needs to be connected by
-          the store owner. You can browse as a guest.
+          Google and email sign-in need to be connected by the store owner.
+          {admin
+            ? " Administrator sign-in also requires two-factor authentication."
+            : s.siteAuthReady
+              ? " You can use your ChatGPT account above."
+              : " You can browse as a guest."}
         </div>
       )}
       {!forgot && !verify && (

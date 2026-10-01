@@ -16,7 +16,10 @@ export default function Cart() {
   const [coupon, setCoupon] = useState(""),
     [discount, setDiscount] = useState(0),
     [error, setError] = useState("");
-  useEffect(() => setDiscount(0), [s.cart]);
+  useEffect(() => {
+    setDiscount(0);
+    sessionStorage.removeItem("inshop-coupon");
+  }, [s.cart]);
   const rows = s.cart
     .map((l) => ({ line: l, p: s.products.find((p) => p.id === l.id) }))
     .filter((x) => x.p);
@@ -51,15 +54,21 @@ export default function Cart() {
         <div>
           <div className="shipping-progress">
             <span>
-              {subtotal >= 99900
+              {subtotal >= (s.settings.freeOver ?? 99900)
                 ? "Your cart qualifies for free standard delivery."
                 : "Add " +
-                  money(99900 - subtotal) +
+                  money((s.settings.freeOver ?? 99900) - subtotal) +
                   " more for free standard delivery."}
             </span>
             <div>
               <i
-                style={{ width: Math.min(100, (subtotal / 99900) * 100) + "%" }}
+                style={{
+                  width:
+                    Math.min(
+                      100,
+                      (subtotal / (s.settings.freeOver || 1)) * 100,
+                    ) + "%",
+                }}
               />
             </div>
           </div>

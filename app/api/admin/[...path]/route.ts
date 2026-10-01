@@ -9,6 +9,19 @@ import {
   HttpError,
 } from "../../../../lib/security";
 import { canTransition } from "../../../../lib/commerce";
+import {
+  releaseOrder,
+  transitionOrder,
+  expireReservations,
+} from "../../../../lib/order-lifecycle";
+import {
+  submitRefund,
+  updateRefund,
+  recordCodRefund,
+  type GatewayRefund,
+} from "../../../../lib/refund-lifecycle";
+import { razorpay } from "../../../../lib/razorpay";
+import { adjustStock } from "../../../../lib/inventory";
 const tableMap: Record<string, string> = {
   products: "products",
   inventory: "products",
@@ -38,6 +51,8 @@ export async function GET(
     const { path } = await params;
     const [resource] = path;
     const db = database();
+    if (["orders", "dashboard"].includes(resource))
+      await expireReservations(db);
     if (
       resource === "dashboard" ||
       resource === "analytics" ||
@@ -79,6 +94,12 @@ export async function GET(
       rows = await db
         .prepare("SELECT * FROM content WHERE kind=? ORDER BY position")
         .bind(resource)
+        .all();
+    else if (resource === "refunds")
+      rows = await db
+        .prepare(
+          "SELECT r.*,o.method,o.reference AS order_reference FROM refunds r JOIN orders o ON o.id=r.order_id ORDER BY r.created_at DESC LIMIT 500",
+        )
         .all();
     else if (tableMap[resource])
       rows = await db
@@ -133,23 +154,42 @@ export async function POST(
         if (v.mrp < v.price)
           throw new HttpError(400, "MRP must be at least the selling price.");
         const pid = id ?? crypto.randomUUID();
+        const existing = id
+          ? await db
+              .prepare("SELECT data FROM products WHERE id=?")
+              .bind(id)
+              .first<{ data: string }>()
+          : null;
+        if (id && !existing) throw new HttpError(404, "Product not found.");
+        const previous = existing ? JSON.parse(existing.data) : {};
         const data = {
+          ...previous,
           ...v,
           id: pid,
-          images: [v.thumbnail],
+          images:
+            previous.thumbnail === v.thumbnail && previous.images?.length
+              ? previous.images
+              : [
+                  v.thumbnail,
+                  ...(previous.images ?? []).filter(
+                    (url: string) => url !== v.thumbnail,
+                  ),
+                ].slice(0, 12),
           categorySlug: v.category.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-          rating: 0,
-          reviews: 0,
+          rating: previous.rating ?? 0,
+          reviews: previous.reviews ?? 0,
           discount: Math.round((1 - v.price / v.mrp) * 100),
-          specs: { Brand: v.brand },
-          tags: [],
-          variants: [{ id: "standard", label: "Standard", delta: 0 }],
-          seller: "INShop",
+          specs: { ...previous.specs, Brand: v.brand },
+          tags: previous.tags ?? [],
+          variants: previous.variants ?? [
+            { id: "standard", label: "Standard", delta: 0 },
+          ],
+          seller: previous.seller ?? "INShop",
         };
         await db.batch([
           db
             .prepare(
-              "INSERT INTO products VALUES (?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET slug=excluded.slug,title=excluded.title,brand=excluded.brand,category=excluded.category,price=excluded.price,mrp=excluded.mrp,stock=excluded.stock,status=excluded.status,data=excluded.data,updated_at=excluded.updated_at",
+              "INSERT INTO products VALUES (?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET slug=excluded.slug,title=excluded.title,brand=excluded.brand,category=excluded.category,price=excluded.price,mrp=excluded.mrp,status=excluded.status,data=excluded.data,updated_at=excluded.updated_at",
             )
             .bind(
               pid,
@@ -171,53 +211,181 @@ export async function POST(
       }
     } else if (resource === "inventory") {
       const v = z
-        .object({ stock: z.number().int().min(0).max(100000) })
+        .object({
+          stock: z.number().int().min(0).max(100000),
+          expectedStock: z.number().int().min(0).max(100000),
+        })
         .parse(b);
-      await db.batch([
-        db
-          .prepare(
-            "INSERT INTO inventory_transactions SELECT ?,id,NULL,?-stock,?,? FROM products WHERE id=?",
-          )
-          .bind(
-            crypto.randomUUID(),
-            v.stock,
-            "Admin stock adjustment",
-            Date.now(),
-            id,
-          ),
-        db
-          .prepare("UPDATE products SET stock=?,updated_at=? WHERE id=?")
-          .bind(v.stock, Date.now(), id),
-      ]);
+      await adjustStock(db, id, v.stock, v.expectedStock);
     } else if (resource === "orders") {
       const v = z
         .object({
           status: z.string(),
           tracking: z.string().max(100).optional(),
           courier: z.string().max(100).optional(),
+          reason: z.string().min(3).max(300).optional(),
+          cashCollected: z.boolean().default(false),
         })
         .parse(b);
-      const o = await db
-        .prepare("SELECT status,data FROM orders WHERE id=?")
+      if (v.status === "cancelled") {
+        if (
+          !(await releaseOrder(
+            db,
+            id,
+            null,
+            v.reason ?? "Cancelled by administrator",
+          ))
+        )
+          throw new HttpError(409, "Order cannot be cancelled at this stage.");
+      } else
+        await transitionOrder(
+          db,
+          id,
+          v.status,
+          v.tracking,
+          v.courier,
+          v.cashCollected,
+        );
+    } else if (resource === "refunds") {
+      if (action === "record-cod") {
+        const v = z
+          .object({
+            reference: z.string().min(5).max(100),
+            confirmed: z.literal(true),
+          })
+          .parse(b);
+        await recordCodRefund(db, id, v.reference);
+      } else if (action === "submit")
+        await submitRefund(db, id, (payment, amount, key) =>
+          razorpay<GatewayRefund>(
+            "/payments/" + encodeURIComponent(payment) + "/refund",
+            "POST",
+            { amount, notes: { inshop_refund: id } },
+            key,
+          ),
+        );
+      else if (action === "reconcile") {
+        const row = await db
+          .prepare("SELECT gateway_id FROM refunds WHERE id=?")
+          .bind(id)
+          .first<{ gateway_id: string }>();
+        if (!row?.gateway_id)
+          throw new HttpError(
+            409,
+            "No gateway refund is recorded. Retry submission with its existing key.",
+          );
+        await updateRefund(
+          db,
+          id,
+          await razorpay<GatewayRefund>(
+            "/refunds/" + encodeURIComponent(row.gateway_id),
+          ),
+        );
+      } else throw new HttpError(400, "Choose submit or reconcile.");
+    } else if (resource === "returns") {
+      const v = z
+        .object({
+          status: z.enum(["approved", "rejected", "received"]),
+          restock: z.boolean().default(false),
+        })
+        .parse(b);
+      const row = await db
+        .prepare(
+          "SELECT r.*,o.payment_status,o.method FROM returns r JOIN orders o ON o.id=r.order_id WHERE r.id=?",
+        )
         .bind(id)
-        .first<{ status: string; data: string }>();
-      if (
-        !o ||
-        !canTransition(o.status, v.status) ||
-        ["cancelled", "refunded", "returned"].includes(v.status)
-      )
+        .first<{
+          order_id: string;
+          status: string;
+          payment_status: string;
+          method: string;
+          type: string;
+        }>();
+      if (!row) throw new HttpError(404, "Return not found.");
+      if (row.type !== "Refund")
         throw new HttpError(
           409,
-          "This order transition requires a separate verified stock or refund operation.",
+          "Replacement fulfillment is not configured. Resolve this request with the customer before processing.",
         );
-      const data = JSON.parse(o.data);
-      data.history.push({ status: v.status, at: Date.now() });
-      if (v.tracking) data.tracking = v.tracking;
-      if (v.courier) data.courier = v.courier;
-      await db
-        .prepare("UPDATE orders SET status=?,data=? WHERE id=? AND status=?")
-        .bind(v.status, JSON.stringify(data), id, o.status)
-        .run();
+      if (v.status === "received") {
+        if (row.status !== "approved")
+          throw new HttpError(409, "Only approved returns can be received.");
+        const gate =
+          "EXISTS(SELECT 1 FROM returns WHERE id=? AND status='approved')";
+        const statements = [];
+        if (v.restock) {
+          statements.push(
+            db
+              .prepare(
+                "INSERT INTO inventory_transactions SELECT lower(hex(randomblob(16))),product_id,order_id,quantity,?,? FROM order_items WHERE order_id=? AND " +
+                  gate,
+              )
+              .bind("Inspected return restocked", Date.now(), row.order_id, id),
+          );
+          statements.push(
+            db
+              .prepare(
+                "UPDATE products SET stock=stock+(SELECT SUM(quantity) FROM order_items WHERE order_id=? AND product_id=products.id) WHERE id IN (SELECT product_id FROM order_items WHERE order_id=?) AND " +
+                  gate,
+              )
+              .bind(row.order_id, row.order_id, id),
+          );
+        }
+        statements.push(
+          db
+            .prepare(
+              "INSERT OR IGNORE INTO refunds (id,order_id,status,amount,created_at,updated_at) SELECT ?,id,'requested',total,?,? FROM orders WHERE id=? AND payment_status='paid' AND " +
+                gate,
+            )
+            .bind(
+              crypto.randomUUID(),
+              Date.now(),
+              Date.now(),
+              row.order_id,
+              id,
+            ),
+        );
+        statements.push(
+          db
+            .prepare(
+              "UPDATE orders SET status='returned',inventory_released=1,payment_status=CASE WHEN payment_status='paid' THEN 'refund-pending' ELSE payment_status END,data=json_insert(data,'$.history[#]',json(?)) WHERE id=? AND " +
+                gate,
+            )
+            .bind(
+              JSON.stringify({ status: "returned", at: Date.now() }),
+              row.order_id,
+              id,
+            ),
+        );
+        statements.push(
+          db
+            .prepare(
+              "UPDATE returns SET status='received' WHERE id=? AND status='approved'",
+            )
+            .bind(id),
+        );
+        await db.batch(statements);
+      } else {
+        if (row.status !== "requested")
+          throw new HttpError(409, "This return has already been reviewed.");
+        await db.batch([
+          db
+            .prepare(
+              "UPDATE orders SET status=?,data=json_insert(data,'$.history[#]',json(?)) WHERE id=? AND EXISTS(SELECT 1 FROM returns WHERE id=? AND status='requested')",
+            )
+            .bind(
+              v.status === "approved" ? "return-approved" : "delivered",
+              JSON.stringify({ status: "return-" + v.status, at: Date.now() }),
+              row.order_id,
+              id,
+            ),
+          db
+            .prepare(
+              "UPDATE returns SET status=? WHERE id=? AND status='requested'",
+            )
+            .bind(v.status, id),
+        ]);
+      }
     } else if (resource === "customers") {
       const v = z.object({ status: z.enum(["active", "suspended"]) }).parse(b);
       if (id === u.id)
@@ -246,21 +414,20 @@ export async function POST(
         })
         .parse(b);
       const ticket = await db
-        .prepare("SELECT messages FROM tickets WHERE id=?")
-        .bind(id)
-        .first<{ messages: string }>();
-      if (!ticket) throw new HttpError(404, "Ticket not found");
-      await db
-        .prepare("UPDATE tickets SET messages=?,status=? WHERE id=?")
+        .prepare(
+          "UPDATE tickets SET messages=json_insert(messages,'$[#]',json(?)),status=? WHERE id=? RETURNING id",
+        )
         .bind(
-          JSON.stringify([
-            ...JSON.parse(ticket.messages),
-            { from: "INShop support", body: v.message, at: Date.now() },
-          ]),
+          JSON.stringify({
+            from: "INShop support",
+            body: v.message,
+            at: Date.now(),
+          }),
           v.status,
           id,
         )
-        .run();
+        .first();
+      if (!ticket) throw new HttpError(404, "Ticket not found");
     } else if (resource === "coupons") {
       const v = z
         .object({
@@ -297,6 +464,11 @@ export async function POST(
           name: z.string().min(2).max(80),
           shippingFee: z.number().int().min(0),
           freeOver: z.number().int().min(0),
+          deliveryPins: z
+            .array(z.string().regex(/^\d{6}$/))
+            .max(10000)
+            .default([]),
+          codMaximum: z.number().int().positive().default(500000),
           codEnabled: z.boolean(),
           membershipEnabled: z.boolean().default(false),
           sellerRegistration: z.boolean().default(false),

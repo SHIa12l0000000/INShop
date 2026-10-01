@@ -20,7 +20,7 @@ test("private customer and admin endpoints deny unauthenticated requests", async
   ]) {
     const r = await fetch(base + path);
     assert.equal(r.status, 401, path);
-    assert.equal(r.headers.get("cache-control"), "no-store");
+    assert.match(r.headers.get("cache-control") ?? "", /\bno-store\b/);
   }
 });
 test("forged identity headers never grant access", async () => {

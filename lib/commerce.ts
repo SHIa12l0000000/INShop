@@ -28,6 +28,7 @@ export const checkoutSchema = z.object({
   method: z.enum(["cod", "razorpay"]),
   coupon: z.string().max(30).default(""),
   idempotencyKey: z.string().uuid(),
+  expectedTotal: z.number().int().nonnegative().optional(),
 });
 export function calculateTotal(
   lines: { price: number; quantity: number }[],

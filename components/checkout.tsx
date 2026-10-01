@@ -12,7 +12,42 @@ export default function Checkout() {
     [method, setMethod] = useState("razorpay"),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
+    [quote, setQuote] = useState<any>(null),
+    [quoting, setQuoting] = useState(false),
+    [addresses, setAddresses] = useState<any[]>([]),
     [key] = useState(() => crypto.randomUUID());
+  useEffect(() => {
+    if (s.user)
+      api("/api/store/addresses")
+        .then((d) => setAddresses(d.rows))
+        .catch((e) => setError(e.message));
+  }, [s.user]);
+  useEffect(() => {
+    if (!items.length) return;
+    let active = true;
+    setQuoting(true);
+    setQuote(null);
+    api("/api/store/quote", {
+      items,
+      coupon: sessionStorage.getItem("inshop-coupon") ?? "",
+      ...(address?.pin ? { pin: address.pin } : {}),
+    })
+      .then((d) => {
+        if (active) {
+          setQuote(d);
+          setError("");
+        }
+      })
+      .catch((e) => {
+        if (active) setError(e.message);
+      })
+      .finally(() => {
+        if (active) setQuoting(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [items, address]);
   useEffect(() => {
     const direct = new URLSearchParams(location.search).get("buyNow");
     try {
@@ -64,6 +99,35 @@ export default function Checkout() {
           {step === 1 ? (
             <>
               <h2>Where should we deliver?</h2>
+              {addresses.length > 0 && (
+                <div className="saved-address-picker">
+                  <h3>Use a saved address</h3>
+                  {addresses.map((r) => {
+                    const a = JSON.parse(r.data);
+                    return (
+                      <button
+                        className="choice-card"
+                        key={r.id}
+                        onClick={() => {
+                          setAddress(a);
+                          setStep(2);
+                        }}
+                      >
+                        <strong>
+                          {a.name} · {a.type}
+                          {r.is_default ? " · Default" : ""}
+                        </strong>
+                        <span>
+                          {a.street}, {a.city} {a.pin}
+                        </span>
+                      </button>
+                    );
+                  })}
+                  <p className="subtext">
+                    Or enter a different delivery address below.
+                  </p>
+                </div>
+              )}
               <AddressForm
                 initial={address}
                 onSubmit={(v) => {
@@ -78,7 +142,13 @@ export default function Checkout() {
               <h2>Choose your delivery</h2>
               <label className="choice-card">
                 <input type="radio" checked readOnly /> Standard delivery{" "}
-                <strong>{subtotal >= 99900 ? "FREE" : "₹49"}</strong>
+                <strong>
+                  {quote
+                    ? quote.shipping
+                      ? money(quote.shipping)
+                      : "FREE"
+                    : "Calculating…"}
+                </strong>
                 <span>
                   Delivery estimate will be confirmed when the store opens.
                 </span>
@@ -139,7 +209,7 @@ export default function Checkout() {
               )}
               <button
                 className="button gold"
-                disabled={busy || !s.commerceReady}
+                disabled={busy || !s.commerceReady || !quote || quoting}
                 onClick={async () => {
                   setBusy(true);
                   setError("");
@@ -150,6 +220,7 @@ export default function Checkout() {
                       method,
                       coupon: sessionStorage.getItem("inshop-coupon") ?? "",
                       idempotencyKey: key,
+                      expectedTotal: quote.total,
                     });
                     if (method === "cod") {
                       s.clearCart();
@@ -171,7 +242,14 @@ export default function Checkout() {
                           email: s.user?.email,
                           contact: address.phone,
                         },
-                        handler: () => {
+                        handler: async () => {
+                          try {
+                            await api("/api/payments/reconcile", {
+                              orderId: d.order.id,
+                            });
+                          } catch {
+                            /* The signed webhook may arrive after the browser callback. */
+                          }
                           location.href =
                             "/account/orders/" + d.order.reference;
                         },
@@ -220,11 +298,30 @@ export default function Checkout() {
           ))}
           <div className="summary-total">
             <span>Subtotal</span>
-            <b>{money(subtotal)}</b>
+            <b>{money(quote?.subtotal ?? subtotal)}</b>
           </div>
+          {quote && (
+            <>
+              <div>
+                <span>Delivery</span>
+                <b>{quote.shipping ? money(quote.shipping) : "FREE"}</b>
+              </div>
+              {quote.discount > 0 && (
+                <div className="in-stock">
+                  <span>Coupon {quote.coupon}</span>
+                  <b>−{money(quote.discount)}</b>
+                </div>
+              )}
+              <div className="summary-total">
+                <span>Total payable</span>
+                <b>{money(quote.total)}</b>
+              </div>
+            </>
+          )}
           <p className="subtext">
-            Shipping and valid coupons are calculated by the server before
-            payment.
+            {quoting
+              ? "Checking prices and availability…"
+              : "Prices, coupons and delivery are verified before you place the order."}
           </p>
         </aside>
       </div>
@@ -282,7 +379,7 @@ export function AddressForm({
       </div>
       <label>
         Address type
-        <select name="type">
+        <select name="type" defaultValue={initial?.type ?? "Home"}>
           <option>Home</option>
           <option>Work</option>
           <option>Other</option>

@@ -4,6 +4,16 @@
 
 An original navy-and-gold marketplace with a responsive storefront, database-backed APIs, customer workflows and a protected administrator workspace. This release is a working development foundation and demonstration catalog, **not a finished production implementation of the entire marketplace specification**.
 
+## October 2026 reliability update
+
+- Optional Sites-managed ChatGPT sign-in for customer accounts, with an explicit opt-in session and server-side identity checks. Set `SITE_AUTH_ENABLED=true` only behind the Sites gateway; never trust these headers on an arbitrary public server. Supabase remains the administrator/Google/email provider; Site sign-in never grants admin access.
+- Server-verified checkout quotes and total-change protection, saved-address selection, edit/default addresses, support conversations and review deletion.
+- Thirty-minute online-payment reservations, atomic expiry/cancellation stock release, coupon restoration, and late-capture refund obligations. Expiry runs during checkout/payment/admin operations and through the protected maintenance endpoint.
+- Idempotent refund submission, uncertain-request retry with the same gateway key, refund reconciliation, and a structured admin workflow for orders/returns/refunds. Return receipt can restock inspected goods; digital refunds are never marked completed from browser assertions.
+- COD delivery requires explicit cash collection confirmation. Offline COD payouts can be recorded with a reference after the refund is actually completed. Replacement requests are rejected until replacement fulfillment exists. Partially/external-refunded payments are held for review and cannot fulfill.
+- Product edits preserve stock; inventory adjustments reject stale quantities.
+- Concurrent cancellation/capture/expiry tests exercise real SQL transactions through the same service functions.
+
 ## What works
 
 - Catalog browsing, category pages, search, brand/price/rating/stock filters, sorting and pagination.
@@ -31,10 +41,11 @@ npm ci
 cp .env.example .env.local
 npm run build
 node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_slimy_madame_web.sql
+node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0001_wise_genesis.sql
 npm run dev
 ```
 
-On Windows, use `Copy-Item .env.example .env.local` instead of `cp` if needed. The preview uses `http://localhost:5173`. Database migrations must run before catalog/API requests. Local Wrangler state is ignored by Git. Guest browsing requires no external accounts. For authentication development, use an HTTPS origin and set `APP_URL` to it; plain HTTP localhost intentionally leaves authentication disabled.
+On Windows, use `Copy-Item .env.example .env.local` instead of `cp` if needed. The preview uses `http://localhost:5173`. Database migrations must run before catalog/API requests. Local Wrangler state is ignored by Git. Guest browsing requires no external accounts. For authentication development, use an HTTPS origin and set `APP_URL` to it; plain HTTP localhost leaves Supabase authentication disabled. To test Sites customer workflows locally, create ignored `.dev.vars` containing `SITE_AUTH_ENABLED="true"` and restart the development server. The starter uses a loopback-only mock ChatGPT identity for local tests; it is excluded from production builds.
 
 The Sites execution helpers choose a portable runtime automatically. When reopening with the Sites plugin, run its `scripts/configure-execution-profile.mjs` before building. The app relies on the `DB` Worker binding; it does not run as a plain Node server or deploy to Vercel without adaptation.
 
@@ -50,6 +61,8 @@ Copy only placeholders from `.env.example`. Never commit real values.
 | `RAZORPAY_KEY_ID`         | Gateway key ID                                                   |
 | `RAZORPAY_KEY_SECRET`     | Server-only gateway secret                                       |
 | `RAZORPAY_WEBHOOK_SECRET` | Separate webhook signing secret                                  |
+| `SITE_AUTH_ENABLED`       | Enable platform customer sign-in only behind Sites               |
+| `MAINTENANCE_SECRET`      | Random secret of at least 32 characters for reservation cleanup  |
 | `COMMERCE_ENABLED`        | Default `false`; do not enable before launch checks              |
 
 `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in the template are setup reminders: configure them in Supabase's Google provider settings, not in frontend code. Hosted runtime values are managed through Sites environment settings. A secret committed to a repository must be rotated, not merely deleted.
@@ -61,7 +74,7 @@ Copy only placeholders from `.env.example`. Never commit real values.
 3. Create a Google OAuth web client. Set Google's authorized callback to the URL supplied by Supabase. Enable Google in Supabase with that client ID and secret.
 4. Configure the application Supabase URL/key and HTTPS origin. Test registration, confirmation, reset, Google consent, logout and expiry with real test accounts.
 
-Google passwords never enter INShop. Supabase stores password hashes and provider identities. Public registration always creates a customer; application roles come from the protected D1 user record. Phone OTP and device-management UI are not implemented in this release.
+Google passwords never enter INShop. Supabase stores password hashes and provider identities. Public registration always creates a customer; application roles come from the protected D1 user record. Phone OTP and device-management UI are not fully implemented in this release. Customer Site accounts use the Sites gateway for identity; the application does not store their password.
 
 ## Administrator provisioning
 
@@ -80,7 +93,7 @@ Create a Razorpay merchant account and start with test credentials. Configure `A
 
 Orders use server-owned prices in integer paise; a D1 atomic batch and nonnegative-stock constraint protect inventory. Sample catalog rows have `demo: true` and cannot be ordered. Replace samples with real authorized inventory before enabling commerce. COD also requires the store's `codEnabled` setting.
 
-**Do not enable live payments yet:** automated reservation expiry, abandoned-payment reconciliation, refund execution/retries, shipping integration, configurable GST calculations and the complete payment failure lifecycle remain unfinished. Manually reconcile pending orders during development. A late capture for a cancelled order returns a reconciliation error instead of silently marking it paid. Test duplicate/concurrent webhook deliveries and actual payment scenarios in a merchant sandbox before launch.
+**Do not enable live payments until merchant sandbox checks pass.** Reservation release, payment-status refresh, and full online refunds now have server workflows, but have not been exercised against your merchant account. Configure `payment.captured`, `refund.processed` and `refund.failed` webhooks. Refunds use Razorpay’s `X-Refund-Idempotency` header with a durable key. Partial refunds, automated COD payout transfers, courier integration and configurable GST calculation still require implementation. Offline COD refunds can be recorded by an authorized administrator after completing the payout elsewhere. Run the protected maintenance endpoint every minute using your deployment scheduler: POST `/api/internal/maintenance` with `Authorization: Bearer <MAINTENANCE_SECRET>` (at least 32 random characters). Private Sites also require platform service access. The endpoint releases up to 100 overdue reservations per invocation; no scheduler is provisioned by the application.
 
 ## Schema, migrations and seed data
 
@@ -97,12 +110,14 @@ npm run typecheck
 npm run test:unit
 # Keep the local application running for these:
 npm run test:api
+# Requires SITE_AUTH_ENABLED=true in ignored .dev.vars (local mock identity):
+npm run test:customer
 npm run test:e2e
 npm run build
 npm audit
 ```
 
-Install a Playwright browser once with `npx playwright install chromium`. `TEST_BASE_URL` can target an isolated test instance for API tests. Do not run tests that assume demo settings against a real merchant store. Tests cover price calculations, validation, policy helpers, SQL stock rollback, event uniqueness, unauthenticated API protection, origin checks and guest UI flows. They do not substitute for configured-provider end-to-end authentication, cross-account access and real payment tests.
+Install a Playwright browser once with `npx playwright install chromium`. `TEST_BASE_URL` can target an isolated test instance for API tests. Do not run tests that assume demo settings against a real merchant store. Tests cover price calculations, validation, policy helpers, stock rollback and stale-edit protection, capture/cancel/expiry races, refund idempotency, COD collection/refund records, authenticated customer APIs, admin denial, origin checks and shopping/account browser flows. They do not substitute for configured-provider end-to-end authentication, cross-account access and real payment tests.
 
 ## Deployment
 
@@ -112,6 +127,6 @@ New Sites are private by default. Publishing does not make the store open to all
 
 ## Remaining launch work
 
-This code does **not** yet fulfill every item in the original specification. Major remaining work includes full variant-specific inventory, product/media uploads, SMS OTP, device/session management, courier APIs, seller workflows/payouts, payment reconciliation and automated refunds, full homepage section scheduling, advanced search/recommendations, review media/helpfulness/reporting, multi-currency/GST invoices, notification delivery, memberships, bulk import, detailed conversion analytics and production observability/backups. Some admin areas expose read-only records or generic content editors rather than full workflows.
+This code does **not** yet fulfill every item in the original specification. Major remaining work includes full variant-specific inventory, product/media uploads, SMS OTP, device/session management, courier APIs, seller workflows/payouts, partial refunds, automated COD payouts and unattended reconciliation, full homepage section scheduling, advanced search/recommendations, review media/helpfulness/reporting, multi-currency/GST invoices, notification delivery, memberships, bulk import, detailed conversion analytics and production observability/backups. Some admin areas expose read-only records or generic content editors rather than full workflows.
 
 Review every configured auth/payment flow, authenticated cross-user isolation, mobile/keyboard accessibility, performance under realistic load and rollback procedures. Replace legal review placeholders with counsel-approved policies. Obtain a security review and finish the workflows above before describing the system as a production marketplace.

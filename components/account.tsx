@@ -23,6 +23,7 @@ export default function Account({ route }: { route: string }) {
   const [rows, setRows] = useState<any[]>([]),
     [error, setError] = useState(""),
     [adding, setAdding] = useState(false),
+    [editingAddress, setEditingAddress] = useState<any>(null),
     [reason, setReason] = useState(""),
     [search, setSearch] = useState(""),
     [mfa, setMfa] = useState<any>(null);
@@ -52,6 +53,7 @@ export default function Account({ route }: { route: string }) {
     ["addresses", "Addresses", MapPin],
     ["reviews", "Reviews", MessageCircle],
     ["notifications", "Notifications", Bell],
+    ["tickets", "Support tickets", MessageCircle],
     ["security", "Login & security", ShieldCheck],
   ] as const;
   return (
@@ -76,7 +78,9 @@ export default function Account({ route }: { route: string }) {
         </a>
         <button
           onClick={() =>
-            api("/api/auth/logout", {}).then(() => (location.href = "/"))
+            api("/api/auth/logout", {})
+              .then(() => (location.href = "/"))
+              .catch((e) => s.notify(e.message))
           }
         >
           Sign out
@@ -129,7 +133,13 @@ export default function Account({ route }: { route: string }) {
           </div>
         ) : section === "addresses" ? (
           <>
-            <button className="button" onClick={() => setAdding(true)}>
+            <button
+              className="button"
+              onClick={() => {
+                setEditingAddress(null);
+                setAdding(true);
+              }}
+            >
               + Add address
             </button>
             <div className="address-list">
@@ -137,7 +147,10 @@ export default function Account({ route }: { route: string }) {
                 const a = JSON.parse(r.data);
                 return (
                   <div className="panel" key={r.id}>
-                    <span className="badge">{a.type}</span>
+                    <span className="badge">
+                      {a.type}
+                      {r.is_default ? " · Default" : ""}
+                    </span>
                     <h3>{a.name}</h3>
                     <p>
                       {a.street}, {a.area}
@@ -146,6 +159,29 @@ export default function Account({ route }: { route: string }) {
                       {a.city}, {a.state} {a.pin}
                     </p>
                     <p>{a.phone}</p>
+                    <div className="row-actions">
+                      <button
+                        className="text-link"
+                        onClick={() => {
+                          setEditingAddress(r);
+                          setAdding(true);
+                        }}
+                      >
+                        Edit
+                      </button>
+                      {!r.is_default && (
+                        <button
+                          className="text-link"
+                          onClick={() =>
+                            api("/api/store/addresses/" + r.id + "/default", {})
+                              .then(load)
+                              .catch((e) => s.notify(e.message))
+                          }
+                        >
+                          Set as default
+                        </button>
+                      )}
+                    </div>
                     <button
                       className="text-link"
                       onClick={() => {
@@ -162,14 +198,26 @@ export default function Account({ route }: { route: string }) {
               })}
             </div>
             <Modal
-              title="Add a delivery address"
+              title={
+                editingAddress
+                  ? "Edit delivery address"
+                  : "Add a delivery address"
+              }
               open={adding}
               close={() => setAdding(false)}
             >
               <AddressForm
+                key={editingAddress?.id ?? "new"}
+                initial={
+                  editingAddress ? JSON.parse(editingAddress.data) : undefined
+                }
                 onSubmit={async (v) => {
                   try {
-                    await api("/api/store/addresses", v);
+                    await api(
+                      "/api/store/addresses" +
+                        (editingAddress ? "/" + editingAddress.id : ""),
+                      v,
+                    );
                     setAdding(false);
                     load();
                     s.notify("Address saved");
@@ -277,6 +325,24 @@ export default function Account({ route }: { route: string }) {
                             </p>
                           )}
                           <div className="row-actions">
+                            {o.method === "razorpay" &&
+                              o.payment_status === "pending" && (
+                                <button
+                                  className="button secondary"
+                                  onClick={() =>
+                                    api("/api/payments/reconcile", {
+                                      orderId: o.id,
+                                    })
+                                      .then(() => {
+                                        load();
+                                        s.notify("Payment status refreshed");
+                                      })
+                                      .catch((e) => s.notify(e.message))
+                                  }
+                                >
+                                  Check payment status
+                                </button>
+                              )}
                             <button
                               className="button secondary"
                               onClick={() => window.print()}
@@ -360,6 +426,36 @@ export default function Account({ route }: { route: string }) {
           ) : (
             <Empty title="You haven’t placed an order yet." />
           )
+        ) : section === "security" && s.user.provider === "site" ? (
+          <div className="panel">
+            <h2>Login & security</h2>
+            <p>
+              You signed in through ChatGPT. Manage your password, authenticator
+              and login sessions in that account.
+            </p>
+            <button
+              className="button secondary"
+              onClick={() =>
+                api("/api/auth/logout", {})
+                  .then(() => {
+                    location.href = "/login";
+                  })
+                  .catch((e) => s.notify(e.message))
+              }
+            >
+              Sign out of INShop
+            </button>
+            <a
+              className="text-link space-top"
+              href="/signout-with-chatgpt?return_to=%2F"
+              target="_top"
+            >
+              Sign out of ChatGPT on this site
+            </a>
+            <p className="subtext space-top">
+              Use the Help Center to submit an account deletion request.
+            </p>
+          </div>
         ) : section === "security" ? (
           <div className="panel">
             <h2>Login & security</h2>
@@ -445,11 +541,69 @@ export default function Account({ route }: { route: string }) {
               Center.
             </p>
           </div>
+        ) : section === "tickets" && rows.length ? (
+          rows.map((r) => (
+            <div className="panel" key={r.id}>
+              <h3>{r.subject}</h3>
+              <p className="subtext">
+                {r.category} · {r.status} · Ticket{" "}
+                {r.id.slice(0, 8).toUpperCase()}
+              </p>
+              <div className="ticket-messages">
+                {JSON.parse(r.messages).map((m: any, i: number) => (
+                  <blockquote key={i}>
+                    <strong>{m.from}</strong>
+                    <p>{m.body}</p>
+                    <small>{new Date(m.at).toLocaleString("en-IN")}</small>
+                  </blockquote>
+                ))}
+              </div>
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  try {
+                    await api("/api/store/tickets/" + r.id + "/reply", {
+                      message: new FormData(form).get("message"),
+                    });
+                    form.reset();
+                    load();
+                  } catch (e) {
+                    s.notify((e as Error).message);
+                  }
+                }}
+              >
+                <label>
+                  Reply
+                  <textarea
+                    name="message"
+                    required
+                    minLength={2}
+                    maxLength={5000}
+                  />
+                </label>
+                <button className="button">Send reply</button>
+              </form>
+            </div>
+          ))
         ) : rows.length ? (
           rows.map((r) => (
             <div className="panel" key={r.id}>
               <h3>{r.title ?? r.subject ?? "Your review"}</h3>
               <p>{r.body ?? r.status}</p>
+              {section === "reviews" && (
+                <button
+                  className="text-link"
+                  onClick={() => {
+                    if (confirm("Delete your review?"))
+                      api("/api/store/reviews/" + r.id + "/delete", {})
+                        .then(load)
+                        .catch((e) => s.notify(e.message));
+                  }}
+                >
+                  Delete review
+                </button>
+              )}
               {r.href && (
                 <a className="text-link" href={r.href}>
                   View details

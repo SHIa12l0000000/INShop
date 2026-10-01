@@ -1,4 +1,5 @@
 import Shop from "../../components/shop";
+export const dynamic = "force-dynamic";
 export default async function Route({
   params,
 }: {

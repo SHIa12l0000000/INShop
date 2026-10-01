@@ -20,6 +20,7 @@ import { api, useStore } from "./store-provider";
 import { money } from "../lib/types";
 import { Modal, Empty } from "./ui";
 import AuthForm from "./auth-form";
+import AdminOperations from "./admin-operations";
 const sections = [
   "Dashboard",
   "Orders",
@@ -547,152 +548,186 @@ export default function Admin({ route }: { route: string }) {
         open={!!editing}
         close={() => setEditing(null)}
       >
-        {editing && (
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              setSaving(true);
-              setSaveError("");
-              const f = new FormData(e.currentTarget);
-              let body: any;
-              try {
-                if (section === "products")
-                  body = {
-                    title: f.get("title"),
-                    slug: f.get("slug"),
-                    brand: f.get("brand"),
-                    category: f.get("category"),
-                    price: Math.round(Number(f.get("price")) * 100),
-                    mrp: Math.round(Number(f.get("mrp")) * 100),
-                    stock: Number(f.get("stock")),
-                    description: f.get("description"),
-                    thumbnail: f.get("thumbnail"),
-                    status: f.get("status"),
-                    sku: f.get("sku"),
-                    demo: f.get("demo") === "on",
-                  };
-                else if (section === "inventory")
-                  body = { stock: Number(f.get("stock")) };
-                else body = JSON.parse(String(f.get("json")));
-                await api(
-                  "/api/admin/" +
-                    section +
-                    (editing.id ? "/" + editing.id : ""),
-                  body,
-                );
-                setEditing(null);
-                load();
-                s.notify("Changes saved");
-              } catch (e) {
-                setSaveError((e as Error).message);
-              } finally {
-                setSaving(false);
-              }
+        {editing && ["orders", "returns", "refunds"].includes(section) ? (
+          <AdminOperations
+            section={section}
+            row={editing}
+            onSaved={() => {
+              setEditing(null);
+              load();
+              s.notify("Order operation saved");
             }}
-          >
-            {section === "products" ? (
-              <>
-                <div className="form-grid">
-                  {[
-                    "title",
-                    "slug",
-                    "sku",
-                    "brand",
-                    "category",
-                    "thumbnail",
-                    "price",
-                    "mrp",
-                    "stock",
-                  ].map((k) => (
-                    <label key={k}>
-                      {k === "mrp"
-                        ? "MRP (₹)"
-                        : k === "price"
-                          ? "Price (₹)"
-                          : k}
-                      <input
-                        name={k}
-                        required
-                        type={
-                          ["price", "mrp", "stock"].includes(k)
-                            ? "number"
-                            : "text"
-                        }
-                        defaultValue={
-                          ["price", "mrp"].includes(k)
-                            ? (editing[k] ?? 0) / 100
-                            : (editing[k] ?? "")
-                        }
-                        min={k === "stock" ? 0 : undefined}
-                      />
-                    </label>
-                  ))}
-                </div>
+          />
+        ) : (
+          editing && (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setSaving(true);
+                setSaveError("");
+                const f = new FormData(e.currentTarget);
+                let body: any;
+                try {
+                  if (section === "products")
+                    body = {
+                      title: f.get("title"),
+                      slug: f.get("slug"),
+                      brand: f.get("brand"),
+                      category: f.get("category"),
+                      price: Math.round(Number(f.get("price")) * 100),
+                      mrp: Math.round(Number(f.get("mrp")) * 100),
+                      stock: Number(f.get("stock")),
+                      description: f.get("description"),
+                      thumbnail: f.get("thumbnail"),
+                      status: f.get("status"),
+                      sku: f.get("sku"),
+                      demo: f.get("demo") === "on",
+                    };
+                  else if (section === "inventory")
+                    body = {
+                      stock: Number(f.get("stock")),
+                      expectedStock: editing.stock,
+                    };
+                  else body = JSON.parse(String(f.get("json")));
+                  await api(
+                    "/api/admin/" +
+                      section +
+                      (editing.id ? "/" + editing.id : ""),
+                    body,
+                  );
+                  setEditing(null);
+                  load();
+                  s.notify("Changes saved");
+                } catch (e) {
+                  setSaveError((e as Error).message);
+                } finally {
+                  setSaving(false);
+                }
+              }}
+            >
+              {section === "products" ? (
+                <>
+                  <div className="form-grid">
+                    {[
+                      "title",
+                      "slug",
+                      "sku",
+                      "brand",
+                      "category",
+                      "thumbnail",
+                      "price",
+                      "mrp",
+                      "stock",
+                    ].map((k) => (
+                      <label key={k}>
+                        {k === "mrp"
+                          ? "MRP (₹)"
+                          : k === "price"
+                            ? "Price (₹)"
+                            : k}
+                        <input
+                          name={k}
+                          readOnly={k === "stock" && !!editing.id}
+                          required
+                          type={
+                            ["price", "mrp", "stock"].includes(k)
+                              ? "number"
+                              : "text"
+                          }
+                          defaultValue={
+                            ["price", "mrp"].includes(k)
+                              ? (editing[k] ?? 0) / 100
+                              : (editing[k] ?? "")
+                          }
+                          min={k === "stock" ? 0 : undefined}
+                        />
+                      </label>
+                    ))}
+                  </div>
+                  {editing.id && (
+                    <p className="subtext">
+                      Use Inventory to adjust available stock. Product edits
+                      preserve current quantities.
+                    </p>
+                  )}
+                  <label>
+                    Description
+                    <textarea
+                      name="description"
+                      required
+                      minLength={10}
+                      defaultValue={editing.description ?? ""}
+                    />
+                  </label>
+                  <label>
+                    Status
+                    <select
+                      name="status"
+                      defaultValue={editing.status ?? "draft"}
+                    >
+                      <option>draft</option>
+                      <option>active</option>
+                      <option>archived</option>
+                    </select>
+                  </label>
+                  <label className="checkbox">
+                    <input
+                      type="checkbox"
+                      name="demo"
+                      defaultChecked={editing.demo ?? false}
+                    />
+                    Sample product (cannot be purchased)
+                  </label>
+                </>
+              ) : section === "inventory" ? (
                 <label>
-                  Description
-                  <textarea
-                    name="description"
-                    required
-                    minLength={10}
-                    defaultValue={editing.description ?? ""}
-                  />
-                </label>
-                <label>
-                  Status
-                  <select
-                    name="status"
-                    defaultValue={editing.status ?? "draft"}
-                  >
-                    <option>draft</option>
-                    <option>active</option>
-                    <option>archived</option>
-                  </select>
-                </label>
-                <label className="checkbox">
+                  Available stock
                   <input
-                    type="checkbox"
-                    name="demo"
-                    defaultChecked={editing.demo ?? false}
-                  />
-                  Sample product (cannot be purchased)
-                </label>
-              </>
-            ) : section === "inventory" ? (
-              <label>
-                Available stock
-                <input
-                  name="stock"
-                  type="number"
-                  min="0"
-                  required
-                  defaultValue={editing.stock}
-                />
-              </label>
-            ) : (
-              <>
-                <p className="subtext">
-                  Edit the structured record. Changes are validated and logged
-                  server-side.
-                </p>
-                <label>
-                  Record data
-                  <textarea
-                    className="json-editor"
-                    name="json"
-                    defaultValue={JSON.stringify(
-                      editorData(section, editing),
-                      null,
-                      2,
-                    )}
+                    name="stock"
+                    type="number"
+                    min="0"
+                    required
+                    defaultValue={editing.stock}
                   />
                 </label>
-              </>
-            )}
-            {saveError && <p className="error-text">{saveError}</p>}
-            <button
-              disabled={
-                saving ||
-                [
+              ) : (
+                <>
+                  <p className="subtext">
+                    Edit the structured record. Changes are validated and logged
+                    server-side.
+                  </p>
+                  <label>
+                    Record data
+                    <textarea
+                      className="json-editor"
+                      name="json"
+                      defaultValue={JSON.stringify(
+                        editorData(section, editing),
+                        null,
+                        2,
+                      )}
+                    />
+                  </label>
+                </>
+              )}
+              {saveError && <p className="error-text">{saveError}</p>}
+              <button
+                disabled={
+                  saving ||
+                  [
+                    "payments",
+                    "returns",
+                    "refunds",
+                    "sellers",
+                    "security",
+                    "logs",
+                    "notifications",
+                    "admins",
+                  ].includes(section)
+                }
+                className="button gold"
+              >
+                {[
                   "payments",
                   "returns",
                   "refunds",
@@ -702,25 +737,13 @@ export default function Admin({ route }: { route: string }) {
                   "notifications",
                   "admins",
                 ].includes(section)
-              }
-              className="button gold"
-            >
-              {[
-                "payments",
-                "returns",
-                "refunds",
-                "sellers",
-                "security",
-                "logs",
-                "notifications",
-                "admins",
-              ].includes(section)
-                ? "Read-only record"
-                : saving
-                  ? "Saving…"
-                  : "Save changes"}
-            </button>
-          </form>
+                  ? "Read-only record"
+                  : saving
+                    ? "Saving…"
+                    : "Save changes"}
+              </button>
+            </form>
+          )
         )}
       </Modal>
     </div>

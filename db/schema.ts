@@ -85,11 +85,17 @@ export const orders = sqliteTable(
     total: integer("total").notNull(),
     data: text("data").notNull(),
     gatewayId: text("gateway_id"),
+    paymentId: text("payment_id"),
+    expiresAt: integer("expires_at"),
+    inventoryReleased: integer("inventory_released").notNull().default(0),
     createdAt: integer("created_at").notNull(),
   },
   (t) => [
     index("idx_orders_user_date").on(t.userId, t.createdAt),
     uniqueIndex("idx_order_idempotency").on(t.userId, t.idempotencyKey),
+    uniqueIndex("idx_order_gateway").on(t.gatewayId),
+    uniqueIndex("idx_order_payment").on(t.paymentId),
+    index("idx_order_expiry").on(t.paymentStatus, t.expiresAt),
   ],
 );
 export const orderItems = sqliteTable(
@@ -195,11 +201,13 @@ export const returns = sqliteTable("returns", {
 });
 export const refunds = sqliteTable("refunds", {
   id: text("id").primaryKey(),
-  orderId: text("order_id").notNull(),
+  orderId: text("order_id").notNull().unique(),
   gatewayId: text("gateway_id"),
   status: text("status").notNull(),
   amount: integer("amount").notNull(),
   createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull().default(0),
+  lastError: text("last_error"),
 });
 export const settings = sqliteTable("settings", {
   key: text("key").primaryKey(),

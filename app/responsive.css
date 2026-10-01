@@ -99,6 +99,9 @@
   padding: 30px 35px;
   margin: auto;
 }
+.admin-content > .panel {
+  overflow-x: auto;
+}
 .demo-banner {
   font-size: 12px;
   background: #fff0d7;

@@ -1664,3 +1664,43 @@ textarea {
   padding: 18px 0;
   border-bottom: 1px solid var(--border);
 }
+.operations-panel form {
+  margin: 1.2rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border, #e2e5e9);
+}
+.operation-facts {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+  margin: 0 0 1rem;
+}
+.operation-facts dt {
+  color: var(--muted, #687480);
+}
+.operation-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.operations-panel li {
+  margin-bottom: 0.65rem;
+}
+.ticket-messages {
+  max-height: 420px;
+  overflow: auto;
+  margin: 1rem 0;
+}
+.ticket-messages blockquote {
+  margin: 0.8rem 0;
+  padding: 1rem;
+  background: var(--surface, #f4f6f8);
+  border-left: 3px solid #eda93e;
+  overflow-wrap: anywhere;
+}
+.saved-address-picker {
+  margin-bottom: 1.2rem;
+}
+.saved-address-picker .choice-card {
+  width: 100%;
+  text-align: left;
+}

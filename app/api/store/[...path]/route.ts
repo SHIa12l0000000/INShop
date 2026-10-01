@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { checkoutQuote } from "../../../../lib/checkout-quote";
 import {
   allProducts,
   database,
@@ -6,7 +7,12 @@ import {
   settingsValue,
   config,
 } from "../../../../lib/database";
-import { authConfigured, currentUser, requireUser } from "../../../../lib/auth";
+import {
+  authConfigured,
+  siteAuthConfigured,
+  currentUser,
+  requireUser,
+} from "../../../../lib/auth";
 import {
   jsonBody,
   sameOrigin,
@@ -45,6 +51,7 @@ export async function GET(
           })),
           settings: await settingsValue(),
           authConfigured: authConfigured(),
+          siteAuthConfigured: siteAuthConfigured(),
           commerceEnabled: config("COMMERCE_ENABLED") === "true",
           paymentsConfigured: !!config("RAZORPAY_KEY_ID"),
         },
@@ -203,32 +210,20 @@ export async function POST(
     await rateLimit(req, resource, resource === "checkout" ? 8 : 30);
     const b = await jsonBody(req);
     const db = database();
-    if (resource === "coupon") {
-      const v = z
-        .object({ code: z.string().max(30), items: cartSchema })
-        .parse(b);
-      const coupon = await db
-        .prepare(
-          "SELECT * FROM coupons WHERE code=? AND active=1 AND remaining>0 AND expires_at>?",
-        )
-        .bind(v.code.toUpperCase(), Date.now())
-        .first<{
-          kind: string;
-          value: number;
-          minimum: number;
-          maximum: number;
-        }>();
-      if (!coupon) throw new HttpError(400, "Coupon is invalid or expired.");
-      const ps = await allProducts();
-      const lines = v.items.map((i) => {
-        const p = ps.find((p) => p.id === i.id);
-        if (!p) throw new HttpError(400, "Product unavailable");
-        return { price: p.price, quantity: i.quantity };
-      });
-      const totals = calculateTotal(lines, coupon);
-      if (!totals.discount)
-        throw new HttpError(400, "Minimum spend for WELCOME10 is ₹999.");
-      return Response.json(totals);
+    if (resource === "quote" || resource === "coupon") {
+      const user = await currentUser();
+      const quote = await checkoutQuote(
+        resource === "coupon" ? { ...b, coupon: b.code } : b,
+        user?.id,
+      );
+      return Response.json(
+        {
+          ...quote.totals,
+          lines: quote.lines,
+          coupon: quote.coupon?.code ?? null,
+        },
+        { headers: { "Cache-Control": "no-store" } },
+      );
     }
     const u = await requireUser();
     if (resource === "checkout")
@@ -248,17 +243,42 @@ export async function POST(
         .bind(v.name, u.id)
         .run();
     } else if (resource === "addresses") {
-      if (action === "delete") {
+      if (action === "default") {
+        const owned = await db
+          .prepare("SELECT id FROM addresses WHERE id=? AND user_id=?")
+          .bind(id, u.id)
+          .first();
+        if (!owned) throw new HttpError(404, "Address not found.");
+        await db.batch([
+          db
+            .prepare("UPDATE addresses SET is_default=0 WHERE user_id=?")
+            .bind(u.id),
+          db
+            .prepare(
+              "UPDATE addresses SET is_default=1 WHERE id=? AND user_id=?",
+            )
+            .bind(id, u.id),
+        ]);
+      } else if (action === "delete") {
         await db
           .prepare("DELETE FROM addresses WHERE id=? AND user_id=?")
           .bind(id, u.id)
           .run();
       } else {
         const v = addressSchema.parse(b);
-        await db
-          .prepare("INSERT INTO addresses VALUES (?,?,?,0)")
-          .bind(crypto.randomUUID(), u.id, JSON.stringify(v))
-          .run();
+        if (id) {
+          const changed = await db
+            .prepare(
+              "UPDATE addresses SET data=? WHERE id=? AND user_id=? RETURNING id",
+            )
+            .bind(JSON.stringify(v), id, u.id)
+            .first();
+          if (!changed) throw new HttpError(404, "Address not found.");
+        } else
+          await db
+            .prepare("INSERT INTO addresses VALUES (?,?,?,0)")
+            .bind(crypto.randomUUID(), u.id, JSON.stringify(v))
+            .run();
       }
     } else if (resource === "wishlists") {
       const v = z
@@ -290,12 +310,17 @@ export async function POST(
         return Response.json({ ok: true, id: listId });
       }
     } else if (resource === "orders" && action === "cancel") {
-      await cancelOrder(id, u.id);
+      const v = z
+        .object({
+          reason: z.string().min(3).max(300).default("Customer request"),
+        })
+        .parse(b);
+      await cancelOrder(id, u.id, v.reason);
     } else if (resource === "orders" && action === "return") {
       const v = z
         .object({
           reason: z.string().min(10).max(2000),
-          type: z.enum(["Refund", "Replacement"]),
+          type: z.literal("Refund"),
         })
         .parse(b);
       const o = await db
@@ -309,25 +334,32 @@ export async function POST(
           409,
           "Only delivered orders are eligible for a return request.",
         );
-      await db.batch([
-        db
-          .prepare("INSERT INTO returns VALUES (?,?,?,?,?,?,?)")
-          .bind(
-            crypto.randomUUID(),
-            id,
-            u.id,
-            v.reason,
-            v.type,
-            "requested",
-            Date.now(),
-          ),
+      const returnId = crypto.randomUUID();
+      const returned = await db.batch([
         db
           .prepare(
-            "UPDATE orders SET status='return-requested' WHERE id=? AND user_id=?",
+            "INSERT INTO returns SELECT ?,id,user_id,?,?,?,? FROM orders WHERE id=? AND user_id=? AND status='delivered' RETURNING id",
           )
-          .bind(id, u.id),
+          .bind(returnId, v.reason, v.type, "requested", Date.now(), id, u.id),
+        db
+          .prepare(
+            "UPDATE orders SET status='return-requested' WHERE id=? AND user_id=? AND EXISTS(SELECT 1 FROM returns WHERE id=?)",
+          )
+          .bind(id, u.id, returnId),
       ]);
+      if (!returned[0].results.length)
+        throw new HttpError(
+          409,
+          "A return request already exists or the order changed.",
+        );
     } else if (resource === "reviews") {
+      if (action === "delete") {
+        await db
+          .prepare("DELETE FROM reviews WHERE id=? AND user_id=?")
+          .bind(id, u.id)
+          .run();
+        return Response.json({ ok: true });
+      }
       const v = z
         .object({
           productId: z.string().max(100),
@@ -369,6 +401,21 @@ export async function POST(
         .bind(crypto.randomUUID(), v.productId, u.id, v.body, Date.now())
         .run();
     } else if (resource === "tickets") {
+      if (action === "reply") {
+        const v = z.object({ message: z.string().min(2).max(5000) }).parse(b);
+        const result = await db
+          .prepare(
+            "UPDATE tickets SET messages=json_insert(messages,'$[#]',json(?)),status='open' WHERE id=? AND user_id=? RETURNING id",
+          )
+          .bind(
+            JSON.stringify({ from: u.name, body: v.message, at: Date.now() }),
+            id,
+            u.id,
+          )
+          .first();
+        if (!result) throw new HttpError(404, "Ticket not found.");
+        return Response.json({ ok: true });
+      }
       const v = z
         .object({
           subject: z.string().min(5).max(200),
