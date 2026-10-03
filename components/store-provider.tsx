@@ -41,6 +41,8 @@ type Store = {
   settings: Record<string, any>;
   banners: any[];
   authReady: boolean;
+  googleAuthReady: boolean;
+  emailDeliveryReady: boolean;
   siteAuthReady: boolean;
   commerceReady: boolean;
   notice: string;
@@ -86,6 +88,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     [settings, setSettings] = useState({}),
     [banners, setBanners] = useState<any[]>([]),
     [authReady, setAuthReady] = useState(false),
+    [googleAuthReady, setGoogleAuthReady] = useState(false),
+    [emailDeliveryReady, setEmailDeliveryReady] = useState(false),
     [siteAuthReady, setSiteAuthReady] = useState(false),
     [commerceReady, setCommerceReady] = useState(false),
     [notice, notify] = useState(""),
@@ -101,6 +105,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setSettings(d.settings);
       setBanners(d.banners);
       setAuthReady(d.authConfigured);
+      setGoogleAuthReady(d.googleAuthConfigured === true);
+      setEmailDeliveryReady(d.emailDeliveryConfigured === true);
       setSiteAuthReady(d.siteAuthConfigured);
       setCommerceReady(d.commerceEnabled);
       setError("");
@@ -279,6 +285,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         settings,
         banners,
         authReady,
+        googleAuthReady,
+        emailDeliveryReady,
         siteAuthReady,
         commerceReady,
         notice,

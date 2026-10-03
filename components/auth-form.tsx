@@ -77,9 +77,15 @@ export default function AuthForm({
       {!forgot && !verify && (
         <>
           <a
-            className={"google-button " + (!s.authReady ? "disabled-link" : "")}
-            href={s.authReady ? "/api/auth/google" : undefined}
-            aria-disabled={!s.authReady}
+            className={
+              "google-button " + (!s.googleAuthReady ? "disabled-link" : "")
+            }
+            href={
+              s.googleAuthReady
+                ? "/api/auth/google" + (admin ? "?next=/admin/login" : "")
+                : undefined
+            }
+            aria-disabled={!s.googleAuthReady}
           >
             <b>G</b> Continue with Google
           </a>
@@ -87,6 +93,16 @@ export default function AuthForm({
             <span>or</span>
           </div>
         </>
+      )}
+      {s.authReady && !s.googleAuthReady && !forgot && !verify && (
+        <p className="subtext">Google sign-in is temporarily unavailable.</p>
+      )}
+      {s.authReady && !s.emailDeliveryReady && (register || forgot) && (
+        <div className="setup-note" role="status">
+          {register
+            ? "Email registration is temporarily unavailable. Use another available sign-in method or continue as a guest."
+            : "Password reset emails are temporarily unavailable. Please contact support."}
+        </div>
       )}
       <form
         onSubmit={async (e) => {
@@ -237,7 +253,14 @@ export default function AuthForm({
             {message}
           </p>
         )}
-        <button className="button gold full" disabled={busy || !s.authReady}>
+        <button
+          className="button gold full"
+          disabled={
+            busy ||
+            !s.authReady ||
+            ((register || forgot) && !s.emailDeliveryReady)
+          }
+        >
           {busy
             ? "Please wait…"
             : register

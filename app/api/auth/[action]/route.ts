@@ -2,6 +2,12 @@ import {
   authClient,
   requireUser,
   siteAuthConfigured,
+  authConfigured,
+  googleAuthConfigured,
+  emailDeliveryConfigured,
+  authDestination,
+  clearSiteSession,
+  clearSupabaseCookies,
 } from "../../../../lib/auth";
 import { cookies } from "next/headers";
 import { getChatGPTUser, chatGPTSignInPath } from "../../../chatgpt-auth";
@@ -23,15 +29,16 @@ export async function POST(
     await initialize();
     await rateLimit(req, "auth", 8);
     const { action } = await params;
-    if (action === "logout" && (await cookies()).get("inshop-site-session")) {
-      (await cookies()).set("inshop-site-session", "", {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/",
-        maxAge: 0,
-        expires: new Date(0),
-      });
+    if (action === "logout") {
+      await clearSiteSession();
+      try {
+        if (authConfigured()) {
+          const client = await authClient();
+          await client.auth.signOut({ scope: "local" });
+        }
+      } finally {
+        await clearSupabaseCookies();
+      }
       return Response.json({ ok: true });
     }
     if (action === "factors") {
@@ -57,6 +64,11 @@ export async function POST(
         .parse(b);
       result = await client.auth.signInWithPassword(v);
     } else if (action === "register") {
+      if (!emailDeliveryConfigured())
+        throw new HttpError(
+          503,
+          "Email registration is temporarily unavailable. Please use another available sign-in method.",
+        );
       const v = z
         .object({
           email: z.string().email(),
@@ -81,12 +93,15 @@ export async function POST(
         },
       });
     } else if (action === "forgot-password") {
+      if (!emailDeliveryConfigured())
+        throw new HttpError(
+          503,
+          "Password reset emails are temporarily unavailable. Please contact support.",
+        );
       const v = z.object({ email: z.string().email() }).parse(b);
       result = await client.auth.resetPasswordForEmail(v.email, {
         redirectTo: config("APP_URL") + "/auth/callback?next=/account/security",
       });
-    } else if (action === "logout") {
-      result = await client.auth.signOut();
     } else if (action === "password") {
       const v = z
         .object({
@@ -133,6 +148,12 @@ export async function POST(
           ? "Email or password is incorrect, or your email has not been verified."
           : result.error.message,
       );
+    if (
+      ["login", "register", "verify"].includes(action) &&
+      "session" in result.data &&
+      result.data.session
+    )
+      await clearSiteSession();
     return Response.json({
       ok: true,
       message:
@@ -161,6 +182,14 @@ export async function GET(
           new URL(chatGPTSignInPath("/api/auth/site"), req.url),
           302,
         );
+      if (authConfigured()) {
+        const client = await authClient();
+        try {
+          await client.auth.signOut({ scope: "local" });
+        } finally {
+          await clearSupabaseCookies();
+        }
+      }
       (await cookies()).set("inshop-site-session", "1", {
         httpOnly: true,
         secure: true,
@@ -171,11 +200,19 @@ export async function GET(
       return Response.redirect(new URL("/account", req.url), 302);
     }
     if (action !== "google") throw new HttpError(404, "Not found");
+    if (!googleAuthConfigured())
+      throw new HttpError(503, "Google sign-in is temporarily unavailable.");
     await rateLimit(req, "oauth", 10);
     const client = await authClient();
+    const next = authDestination(new URL(req.url).searchParams.get("next"));
     const { data, error } = await client.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: config("APP_URL") + "/auth/callback" },
+      options: {
+        redirectTo:
+          config("APP_URL") +
+          "/auth/callback" +
+          (next === "/account" ? "" : "?next=" + next),
+      },
     });
     if (error || !data.url)
       throw new HttpError(400, "Google sign-in could not be started.");

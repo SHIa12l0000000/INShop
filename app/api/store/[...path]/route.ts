@@ -9,6 +9,8 @@ import {
 } from "../../../../lib/database";
 import {
   authConfigured,
+  googleAuthConfigured,
+  emailDeliveryConfigured,
   siteAuthConfigured,
   currentUser,
   requireUser,
@@ -51,6 +53,8 @@ export async function GET(
           })),
           settings: await settingsValue(),
           authConfigured: authConfigured(),
+          googleAuthConfigured: googleAuthConfigured(),
+          emailDeliveryConfigured: emailDeliveryConfigured(),
           siteAuthConfigured: siteAuthConfigured(),
           commerceEnabled: config("COMMERCE_ENABLED") === "true",
           paymentsConfigured: !!config("RAZORPAY_KEY_ID"),

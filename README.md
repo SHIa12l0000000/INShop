@@ -6,6 +6,7 @@ An original navy-and-gold marketplace with a responsive storefront, database-bac
 
 ## October 2026 reliability update
 
+- Google availability and verification-email delivery are configured independently. Provider switches clear the previous browser session, logout clears both providers, and Google admin sign-in preserves its MFA destination. Same-email accounts from separate identity providers require support-assisted linking and never inherit permissions through an email match.
 - Optional Sites-managed ChatGPT sign-in for customer accounts, with an explicit opt-in session and server-side identity checks. Set `SITE_AUTH_ENABLED=true` only behind the Sites gateway; never trust these headers on an arbitrary public server. Supabase remains the administrator/Google/email provider; Site sign-in never grants admin access.
 - Server-verified checkout quotes and total-change protection, saved-address selection, edit/default addresses, support conversations and review deletion.
 - Thirty-minute online-payment reservations, atomic expiry/cancellation stock release, coupon restoration, and late-capture refund obligations. Expiry runs during checkout/payment/admin operations and through the protected maintenance endpoint.
@@ -58,6 +59,8 @@ Copy only placeholders from `.env.example`. Never commit real values.
 | `APP_URL`                 | Exact HTTPS application origin, no trailing slash                |
 | `SUPABASE_URL`            | Supabase project URL                                             |
 | `SUPABASE_ANON_KEY`       | Supabase publishable/anonymous key; no service-role key required |
+| `GOOGLE_AUTH_ENABLED`     | Set `true` only after configuring and testing Google's Supabase provider |
+| `EMAIL_DELIVERY_ENABLED`  | Set `true` after a working production SMTP provider is configured; gates registration and reset emails |
 | `RAZORPAY_KEY_ID`         | Gateway key ID                                                   |
 | `RAZORPAY_KEY_SECRET`     | Server-only gateway secret                                       |
 | `RAZORPAY_WEBHOOK_SECRET` | Separate webhook signing secret                                  |
@@ -72,7 +75,10 @@ Copy only placeholders from `.env.example`. Never commit real values.
 1. Create a Supabase project; enable email/password authentication and email confirmation. Configure a production SMTP provider, password policy, auth rate limits and session lifetime.
 2. Set the Supabase site URL to `APP_URL`. Allow the exact `APP_URL/auth/callback` redirect. Avoid production wildcard redirects.
 3. Create a Google OAuth web client. Set Google's authorized callback to the URL supplied by Supabase. Enable Google in Supabase with that client ID and secret.
-4. Configure the application Supabase URL/key and HTTPS origin. Test registration, confirmation, reset, Google consent, logout and expiry with real test accounts.
+4. Configure the application Supabase URL/key and HTTPS origin. Set `GOOGLE_AUTH_ENABLED=true` after the Google provider is connected, and `EMAIL_DELIVERY_ENABLED=true` after custom SMTP works. Supabase's default sender is restricted and is not suitable for public customer verification emails. Password login for existing accounts remains independent of email delivery.
+5. Test registration, confirmation, reset, Google consent, logout and expiry with real test accounts. A Google OAuth app in testing mode has audience restrictions; review and publish its production consent configuration before general customer access. The Sites audience is a separate access gate and remains private unless the owner explicitly changes it.
+
+`npm run test:auth` executes the actual authentication route handlers against real in-memory SQLite, with only the external identity and cookie boundaries replaced. It covers session switching, logout, account conflicts, redirect validation, provider availability and administrator MFA enforcement. It does not replace a real Google consent/sign-in test. Run this suite with Node 24.
 
 Google passwords never enter INShop. Supabase stores password hashes and provider identities. Public registration always creates a customer; application roles come from the protected D1 user record. Phone OTP and device-management UI are not fully implemented in this release. Customer Site accounts use the Sites gateway for identity; the application does not store their password.
 
