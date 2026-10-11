@@ -20,6 +20,7 @@ const bundle = await build({
   stdin: {
     contents: `export * from './lib/auth.ts';
       export {normalizeTotpQr} from './lib/mfa.ts';
+      export {authFeedback} from './lib/auth-feedback.ts';
       export {POST,GET} from './app/api/auth/[action]/route.ts';
       export {GET as callback} from './app/auth/callback/route.ts';`,
     resolveDir: process.cwd(),
@@ -284,7 +285,7 @@ test("OAuth exchange clears Site selection only on success and returns to admini
   );
   assert.equal(
     (await handlers.callback(request)).headers.get("location"),
-    origin + "/login?error=verification",
+    origin + "/admin/login?error=verification",
   );
   assert.equal(f.jar.get("inshop-site-session"), "1");
   f.providerError = null;
@@ -363,6 +364,7 @@ test("admin authorization requires the stored role, Supabase identity and verifi
 test("OAuth destinations are exact allowlisted paths and starting OAuth preserves the active session", async () => {
   f.jar.set("inshop-site-session", "1");
   await oauth("/admin/login");
+  assert.equal(f.calls.at(-1).oauth.options.scopes, "openid email profile");
   assert.equal(
     f.calls.at(-1).oauth.options.redirectTo,
     origin + "/auth/callback?next=/admin/login",
@@ -375,6 +377,34 @@ test("OAuth destinations are exact allowlisted paths and starting OAuth preserve
   ])
     assert.equal(handlers.authDestination(next), "/account");
   assert.equal(f.jar.get("inshop-site-session"), "1");
+});
+
+test("cancelled and malformed OAuth callbacks preserve sessions and never reflect provider errors", async () => {
+  f.jar.set("inshop-site-session", "1");
+  const cancelled = await handlers.callback(
+    new Request(
+      origin +
+        "/auth/callback?error=access_denied&error_description=private-detail&code=ignored&next=/admin/login",
+    ),
+  );
+  assert.equal(
+    cancelled.headers.get("location"),
+    origin + "/admin/login?error=cancelled",
+  );
+  assert.equal(f.calls.includes("exchange"), false);
+  assert.equal(f.jar.get("inshop-site-session"), "1");
+  const invalid = await handlers.callback(
+    new Request(
+      origin + "/auth/callback?error=private-detail&next=https://attacker.test",
+    ),
+  );
+  assert.equal(
+    invalid.headers.get("location"),
+    origin + "/login?error=verification",
+  );
+  assert.equal(handlers.authFeedback("private-detail"), "");
+  assert.match(handlers.authFeedback("cancelled"), /cancelled/);
+  assert.match(handlers.authFeedback("verification"), /start sign-in again/);
 });
 test("disabled Google and email delivery reject provider calls while password login remains available", async () => {
   f.env.GOOGLE_AUTH_ENABLED = "false";

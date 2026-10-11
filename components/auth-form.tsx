@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeOff, ShieldCheck, ArrowRight } from "lucide-react";
 import { api, useStore } from "./store-provider";
+import { authFeedback } from "../lib/auth-feedback";
 export default function AuthForm({
   mode = "login",
   skip,
@@ -17,6 +18,11 @@ export default function AuthForm({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [message, setMessage] = useState("");
+  useEffect(() => {
+    setError(
+      authFeedback(new URLSearchParams(window.location.search).get("error")),
+    );
+  }, []);
   const register = mode === "register",
     forgot = mode === "forgot-password",
     verify = mode === "verify";

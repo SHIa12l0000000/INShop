@@ -264,6 +264,7 @@ export async function GET(
     const { data, error } = await client.auth.signInWithOAuth({
       provider: "google",
       options: {
+        scopes: "openid email profile",
         redirectTo:
           config("APP_URL") +
           "/auth/callback" +

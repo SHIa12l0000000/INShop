@@ -491,12 +491,12 @@ export default function Account({ route }: { route: string }) {
             <button
               className="text-link space-top"
               onClick={() =>
-                api("/api/auth/logout", {}).then(
-                  () => (location.href = "/login"),
-                )
+                api("/api/auth/logout", {})
+                  .then(() => (location.href = "/login"))
+                  .catch((e) => s.notify(e.message))
               }
             >
-              Sign out of all sessions
+              Sign out on this device
             </button>
             <p className="subtext space-top">
               For account deletion, submit a verified request through the Help
