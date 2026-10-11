@@ -19,6 +19,7 @@ const mocks = {
 const bundle = await build({
   stdin: {
     contents: `export * from './lib/auth.ts';
+      export {normalizeTotpQr} from './lib/mfa.ts';
       export {POST,GET} from './app/api/auth/[action]/route.ts';
       export {GET as callback} from './app/auth/callback/route.ts';`,
     resolveDir: process.cwd(),
@@ -186,7 +187,37 @@ beforeEach(() => {
       },
       mfa: {
         async listFactors() {
-          return { data: { totp: f.factors }, error: null };
+          return {
+            data: {
+              all: f.factors,
+              totp: f.factors.filter(
+                (x) =>
+                  x.status === "verified" &&
+                  (!x.factor_type || x.factor_type === "totp"),
+              ),
+            },
+            error: null,
+          };
+        },
+        async unenroll({ factorId }) {
+          f.calls.push({ unenroll: factorId });
+          if (f.removeError) return { error: { message: "Could not remove" } };
+          f.factors = f.factors.filter((x) => x.id !== factorId);
+          return { data: {}, error: null };
+        },
+        async enroll(options) {
+          f.calls.push({ enroll: options });
+          return {
+            data: {
+              id: "new-factor",
+              totp: {
+                secret: "FIXTURE-NOT-A-LIVE-KEY",
+                qr_code:
+                  'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg"><path fill="#000" d="M0 0h1v1z"/></svg>',
+              },
+            },
+            error: null,
+          };
         },
         async getAuthenticatorAssuranceLevel() {
           return { data: { currentLevel: f.level } };
@@ -372,6 +403,93 @@ function enableBootstrap() {
   f.env.ADMIN_BOOTSTRAP_USER_ID = userId;
   f.env.ADMIN_BOOTSTRAP_EMAIL = password.email;
 }
+
+test("TOTP QR encoding preserves SVG colours and produces no URL fragment", () => {
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg"><path fill="#000" d="M0 0h1v1z"/></svg>';
+  for (const input of [
+    svg,
+    "data:image/svg+xml;utf-8," + svg,
+    "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg),
+  ]) {
+    const result = handlers.normalizeTotpQr(input);
+    assert.equal(new URL(result).hash, "");
+    assert.equal(
+      decodeURIComponent(result.slice(result.indexOf(",") + 1)),
+      svg,
+    );
+  }
+  assert.equal(handlers.normalizeTotpQr("https://external.example/qr.svg"), "");
+  assert.equal(handlers.normalizeTotpQr("data:image/svg+xml,%not-encoded"), "");
+});
+
+test("MFA setup replaces only abandoned INShop factors and returns uncached manual setup data", async () => {
+  await post("login", password);
+  f.factors = [
+    {
+      id: "old-inshop",
+      factor_type: "totp",
+      status: "unverified",
+      friendly_name: "INShop authenticator",
+    },
+    {
+      id: "other-app",
+      factor_type: "totp",
+      status: "unverified",
+      friendly_name: "Another app",
+    },
+  ];
+  const response = await post("mfa-enroll");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("cache-control"), /no-store/);
+  const data = await response.json();
+  assert.equal(data.totp.secret, "FIXTURE-NOT-A-LIVE-KEY");
+  assert.equal(new URL(data.totp.qr_code).hash, "");
+  assert.deepEqual(
+    f.calls.filter((x) => x.unenroll),
+    [{ unenroll: "old-inshop" }],
+  );
+  assert.equal(f.factors[0].id, "other-app");
+  assert.equal(f.calls.find((x) => x.enroll).enroll.issuer, "INShop");
+});
+
+test("MFA enrollment never deletes a verified authenticator", async () => {
+  await post("login", password);
+  f.factors = [
+    {
+      id: "active-factor",
+      factor_type: "totp",
+      status: "verified",
+      friendly_name: "INShop authenticator",
+    },
+  ];
+  assert.equal((await post("mfa-enroll")).status, 409);
+  assert.equal(
+    f.calls.some((x) => x.unenroll || x.enroll),
+    false,
+  );
+});
+
+test("MFA setup denies anonymous and Sites sessions and stops if unfinished-factor cleanup fails", async () => {
+  assert.equal((await post("mfa-enroll")).status, 401);
+  f.jar.set("inshop-site-session", "1");
+  assert.equal((await post("mfa-enroll")).status, 403);
+  await post("login", password);
+  f.factors = [
+    {
+      id: "old-inshop",
+      factor_type: "totp",
+      status: "unverified",
+      friendly_name: "INShop authenticator",
+    },
+  ];
+  f.removeError = true;
+  assert.equal((await post("mfa-enroll")).status, 400);
+  assert.equal(
+    f.calls.some((x) => x.enroll),
+    false,
+  );
+});
 
 test("signed-in customers can list only their own verified factors before first-admin activation", async () => {
   enableBootstrap();

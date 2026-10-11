@@ -10,6 +10,41 @@
   --border: #e3e7eb;
   color-scheme: light;
 }
+.authenticator-setup {
+  margin-top: 28px;
+  display: grid;
+  gap: 14px;
+}
+.authenticator-qr {
+  width: fit-content;
+  max-width: 100%;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #d5dce4;
+  border-radius: 8px;
+}
+.authenticator-qr img {
+  display: block;
+  width: 256px;
+  height: auto;
+  aspect-ratio: 1;
+}
+.authenticator-manual {
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 6px;
+}
+.authenticator-manual summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.authenticator-manual p {
+  margin: 12px 0;
+}
+.authenticator-secret {
+  font-family: monospace;
+  letter-spacing: 0.08em;
+}
 * {
   box-sizing: border-box;
 }

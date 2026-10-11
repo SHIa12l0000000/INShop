@@ -16,6 +16,7 @@ import { Empty, Modal } from "./ui";
 import AuthForm from "./auth-form";
 import { AddressForm } from "./checkout";
 import { Wishlist } from "./cart";
+import AuthenticatorSetup from "./authenticator-setup";
 export default function Account({ route }: { route: string }) {
   const s = useStore();
   const section = route.split("/")[2] ?? "profile";
@@ -25,8 +26,7 @@ export default function Account({ route }: { route: string }) {
     [adding, setAdding] = useState(false),
     [editingAddress, setEditingAddress] = useState<any>(null),
     [reason, setReason] = useState(""),
-    [search, setSearch] = useState(""),
-    [mfa, setMfa] = useState<any>(null);
+    [search, setSearch] = useState("");
   const load = () => {
     if (
       ["orders", "addresses", "reviews", "notifications", "tickets"].includes(
@@ -487,45 +487,7 @@ export default function Account({ route }: { route: string }) {
               </p>
               <button className="button">Change password</button>
             </form>
-            <h3 className="space-top">Two-factor authentication</h3>
-            <button
-              className="button secondary"
-              onClick={() =>
-                api("/api/auth/mfa-enroll", {})
-                  .then(setMfa)
-                  .catch((e) => s.notify(e.message))
-              }
-            >
-              Set up authenticator
-            </button>
-            {mfa && (
-              <>
-                <img
-                  src={mfa.totp.qr_code}
-                  alt="Scan with your authenticator app"
-                />
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    api("/api/auth/mfa-verify", {
-                      factorId: mfa.id,
-                      code: new FormData(e.currentTarget).get("code"),
-                    })
-                      .then(() => {
-                        setMfa(null);
-                        s.notify("Two-factor authentication enabled");
-                      })
-                      .catch((e) => s.notify(e.message));
-                  }}
-                >
-                  <label>
-                    Authenticator code
-                    <input name="code" required pattern="[0-9]{6}" />
-                  </label>
-                  <button className="button">Verify & enable</button>
-                </form>
-              </>
-            )}
+            <AuthenticatorSetup email={s.user.email} />
             <button
               className="text-link space-top"
               onClick={() =>

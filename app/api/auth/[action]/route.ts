@@ -20,6 +20,7 @@ import {
   HttpError,
 } from "../../../../lib/security";
 import { z } from "zod";
+import { normalizeTotpQr } from "../../../../lib/mfa";
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ action: string }> },
@@ -134,12 +135,59 @@ export async function POST(
         .parse(b);
       result = await client.auth.verifyOtp({ ...v, type: "sms" });
     } else if (action === "mfa-enroll") {
+      const user = await requireUser();
+      if (user.provider !== "supabase")
+        throw new HttpError(
+          403,
+          "Sign in with your INShop email and password to set up an authenticator.",
+        );
+      const existing = await client.auth.mfa.listFactors();
+      if (existing.error)
+        throw new HttpError(
+          400,
+          "Unable to check authenticator setup. Please retry.",
+        );
+      if (existing.data.totp.some((factor) => factor.status === "verified"))
+        throw new HttpError(
+          409,
+          "An authenticator is already enabled. Select Already set up to enter its current code.",
+        );
+      // Only replace this app's abandoned, unverified setup. Never remove an
+      // active factor or a factor created by another application.
+      for (const factor of existing.data.all) {
+        if (
+          factor.factor_type === "totp" &&
+          factor.status === "unverified" &&
+          factor.friendly_name === "INShop authenticator"
+        ) {
+          const removed = await client.auth.mfa.unenroll({
+            factorId: factor.id,
+          });
+          if (removed.error)
+            throw new HttpError(
+              400,
+              "Unable to restart unfinished setup. Please retry.",
+            );
+        }
+      }
       result = await client.auth.mfa.enroll({
         factorType: "totp",
         friendlyName: "INShop authenticator",
+        issuer: "INShop",
       });
       if (result.error) throw new HttpError(400, result.error.message);
-      return Response.json(result.data);
+      return Response.json(
+        {
+          id: result.data.id,
+          totp: {
+            secret: result.data.totp.secret,
+            qr_code: normalizeTotpQr(result.data.totp.qr_code),
+          },
+        },
+        {
+          headers: { "Cache-Control": "no-store, private", Pragma: "no-cache" },
+        },
+      );
     } else if (action === "mfa-verify") {
       const v = z
         .object({
