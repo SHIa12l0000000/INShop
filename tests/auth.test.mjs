@@ -69,6 +69,18 @@ beforeEach(() => {
     sql.exec(readFileSync("drizzle/" + file, "utf8"));
   sql.exec("INSERT INTO settings VALUES ('catalog_seed_v2','true')");
   const db = {
+    async batch(statements) {
+      sql.exec("BEGIN");
+      try {
+        const result = [];
+        for (const statement of statements) result.push(await statement.run());
+        sql.exec("COMMIT");
+        return result;
+      } catch (error) {
+        sql.exec("ROLLBACK");
+        throw error;
+      }
+    },
     prepare(query) {
       let args = [];
       const s = {
@@ -350,4 +362,116 @@ test("disabled Google and email delivery reject provider calls while password lo
   );
   assert.equal(f.calls.length, 0);
   assert.equal((await post("login", password)).status, 200);
+});
+
+function enableBootstrap() {
+  f.env.ADMIN_BOOTSTRAP_USER_ID = userId;
+  f.env.ADMIN_BOOTSTRAP_EMAIL = password.email;
+}
+
+test("bootstrap checks the current verified provider email rather than a stale stored email", async () => {
+  enableBootstrap();
+  await post("login", password);
+  await handlers.currentUser();
+  f.user.email = "changed@example.test";
+  f.level = "aal2";
+  assert.equal((await handlers.currentUser()).role, "customer");
+  assert.equal(
+    f.sql
+      .prepare(
+        "SELECT COUNT(*) AS n FROM settings WHERE key='security.first_admin'",
+      )
+      .get().n,
+    0,
+  );
+});
+
+test("first admin activation requires the exact confirmed identity and MFA", async () => {
+  enableBootstrap();
+  assert.equal(await handlers.currentUser(), null);
+  await post("login", password);
+  f.user.email_confirmed_at = null;
+  assert.equal(await handlers.currentUser(), null);
+  f.user.email_confirmed_at = "2026-10-01";
+  assert.equal((await handlers.currentUser()).role, "customer");
+  f.level = "aal2";
+  f.env.ADMIN_BOOTSTRAP_USER_ID = "another-user";
+  assert.equal((await handlers.currentUser()).role, "customer");
+  f.env.ADMIN_BOOTSTRAP_USER_ID = userId;
+  f.env.ADMIN_BOOTSTRAP_EMAIL = "another@example.test";
+  assert.equal((await handlers.currentUser()).role, "customer");
+  enableBootstrap();
+  assert.equal((await handlers.requireUser(true)).role, "admin");
+  assert.equal(
+    f.sql
+      .prepare(
+        "SELECT COUNT(*) AS n FROM admin_logs WHERE action='admin.bootstrap'",
+      )
+      .get().n,
+    1,
+  );
+});
+
+test("first admin activation is consumed once and cannot undo later demotion", async () => {
+  enableBootstrap();
+  await post("login", password);
+  f.level = "aal2";
+  await handlers.currentUser();
+  await handlers.currentUser();
+  f.sql.prepare("UPDATE users SET role='customer' WHERE id=?").run(userId);
+  assert.equal((await handlers.currentUser()).role, "customer");
+  assert.equal(
+    f.sql
+      .prepare(
+        "SELECT COUNT(*) AS n FROM admin_logs WHERE action='admin.bootstrap'",
+      )
+      .get().n,
+    1,
+  );
+});
+
+test("bootstrap cannot add an admin where an admin already exists or grant Site identities", async () => {
+  enableBootstrap();
+  await post("login", password);
+  f.level = "aal2";
+  f.sql
+    .prepare(
+      "INSERT INTO users VALUES ('existing-admin','owner@example.test','Owner','admin','active',1,1)",
+    )
+    .run();
+  assert.equal((await handlers.currentUser()).role, "customer");
+  assert.equal(
+    f.sql
+      .prepare(
+        "SELECT COUNT(*) AS n FROM settings WHERE key='security.first_admin'",
+      )
+      .get().n,
+    0,
+  );
+  f.jar.set("inshop-site-session", "1");
+  f.env.ADMIN_BOOTSTRAP_USER_ID = "site:site-user";
+  f.env.ADMIN_BOOTSTRAP_EMAIL = f.siteIdentity.email;
+  assert.equal((await handlers.currentUser()).role, "customer");
+});
+
+test("admin activation rolls back the grant and marker if audit persistence fails", async () => {
+  enableBootstrap();
+  await post("login", password);
+  f.level = "aal2";
+  f.sql.exec(
+    "CREATE TRIGGER fail_bootstrap_audit BEFORE INSERT ON admin_logs BEGIN SELECT RAISE(ABORT, 'audit unavailable'); END",
+  );
+  await assert.rejects(handlers.currentUser(), /audit unavailable/);
+  assert.equal(
+    f.sql.prepare("SELECT role FROM users WHERE id=?").get(userId).role,
+    "customer",
+  );
+  assert.equal(
+    f.sql
+      .prepare(
+        "SELECT COUNT(*) AS n FROM settings WHERE key='security.first_admin'",
+      )
+      .get().n,
+    0,
+  );
 });

@@ -4,6 +4,7 @@ import { config, database } from "./database";
 import { HttpError } from "./security";
 import { hasAdminAccess } from "./policies";
 import { getChatGPTUser } from "../app/chatgpt-auth";
+import { provisionFirstAdmin } from "./admin-provisioning";
 export const siteAuthConfigured = () => config("SITE_AUTH_ENABLED") === "true";
 export const authConfigured = () =>
   !!(
@@ -168,7 +169,12 @@ export async function currentUser() {
       status: string;
     }>();
   return row?.status === "active"
-    ? { ...row, provider: "supabase" as const }
+    ? {
+        ...(await provisionFirstAdmin(row, user.email, () =>
+          client.auth.mfa.getAuthenticatorAssuranceLevel(),
+        )),
+        provider: "supabase" as const,
+      }
     : null;
 }
 export async function requireUser(admin = false) {
