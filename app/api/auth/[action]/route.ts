@@ -43,13 +43,21 @@ export async function POST(
     }
     if (action === "factors") {
       const user = await requireUser();
-      if (user.role !== "admin")
-        throw new HttpError(403, "Administrator access required.");
+      if (user.provider !== "supabase")
+        throw new HttpError(
+          403,
+          "Use your INShop email and password for administrator verification.",
+        );
       const client = await authClient();
       const { data, error } = await client.auth.mfa.listFactors();
       if (error)
         throw new HttpError(400, "Unable to load verification methods.");
+      const assurance = await client.auth.mfa.getAuthenticatorAssuranceLevel();
       return Response.json({
+        adminReady:
+          user.role === "admin" &&
+          !assurance.error &&
+          assurance.data?.currentLevel === "aal2",
         factors: data.totp
           .filter((f) => f.status === "verified")
           .map((f) => ({ id: f.id, name: f.friendly_name || "Authenticator" })),

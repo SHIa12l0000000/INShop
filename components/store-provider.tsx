@@ -37,6 +37,7 @@ type Store = {
   compare: string[];
   user: User | null;
   loading: boolean;
+  sessionLoading: boolean;
   error: string;
   settings: Record<string, any>;
   banners: any[];
@@ -281,6 +282,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         compare,
         user,
         loading,
+        sessionLoading: !accountReady,
         error,
         settings,
         banners,

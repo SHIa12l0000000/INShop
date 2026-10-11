@@ -60,6 +60,7 @@ export default function Admin({ route }: { route: string }) {
     [sidebar, setSidebar] = useState(false);
   const prefix = demo ? "/admin/demo" : "/admin";
   function load() {
+    if (section === "login") return;
     if (demo) {
       setRows(["products", "inventory"].includes(section) ? s.products : []);
       setStats({
@@ -83,8 +84,15 @@ export default function Admin({ route }: { route: string }) {
   if (route === "/admin/login")
     return (
       <div className="admin-login">
-        <AuthForm admin />
-        <MfaVerify />
+        {s.sessionLoading ? (
+          <div className="panel" role="status">
+            Checking your sign-in…
+          </div>
+        ) : s.user?.provider === "supabase" ? (
+          <MfaVerify />
+        ) : (
+          <AuthForm admin />
+        )}
       </div>
     );
   const dashboard = ["dashboard", "analytics", "reports"].includes(section);
@@ -788,18 +796,73 @@ function MfaVerify() {
   const s = useStore();
   const [error, setError] = useState("");
   const [factors, setFactors] = useState<{ id: string; name: string }[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
-    if (s.user?.role === "admin")
-      api("/api/auth/factors", {})
-        .then((d) => setFactors(d.factors))
-        .catch((e) => setError(e.message));
-  }, [s.user?.id]);
+    let active = true;
+    setLoading(true);
+    setError("");
+    api("/api/auth/factors", {})
+      .then((d) => {
+        if (!active) return;
+        if (d.adminReady) window.location.replace("/admin");
+        else setFactors(d.factors);
+      })
+      .catch((e) => {
+        if (active) setError(e.message);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [s.user?.id, attempt]);
+  if (loading)
+    return (
+      <div className="panel" role="status">
+        Checking your authenticator…
+      </div>
+    );
+  if (error && !factors.length)
+    return (
+      <div className="panel">
+        <h2>Verification couldn’t load</h2>
+        <p role="alert" className="error-text">
+          {error}
+        </p>
+        <button className="button" onClick={() => setAttempt(attempt + 1)}>
+          Try again
+        </button>
+        <a className="text-link space-top" href="/account/security">
+          Login & security
+        </a>
+      </div>
+    );
+  if (!factors.length)
+    return (
+      <div className="panel">
+        <ShieldCheck size={32} aria-hidden="true" />
+        <h2>Password accepted</h2>
+        <p>Signed in as {s.user?.email}.</p>
+        <p className="subtext">
+          Set up an authenticator to complete administrator verification, then
+          return here. Administrator permissions are checked separately.
+        </p>
+        <a className="button gold space-top" href="/account/security">
+          Set up authenticator
+        </a>
+      </div>
+    );
   return (
     <form
       className="panel"
       onSubmit={async (e) => {
         e.preventDefault();
         const f = new FormData(e.currentTarget);
+        setBusy(true);
+        setError("");
         try {
           await api("/api/auth/mfa-verify", {
             factorId: f.get("factorId"),
@@ -808,13 +871,15 @@ function MfaVerify() {
           location.href = "/admin";
         } catch (e) {
           setError((e as Error).message);
+        } finally {
+          setBusy(false);
         }
       }}
     >
       <h3>Administrator verification</h3>
       <p className="subtext">
-        After signing in, choose your authenticator and enter its current code.
-        Enrollment is available under Account → Login & security.
+        Signed in as {s.user?.email}. Enter the current code from your
+        authenticator app.
       </p>
       <label>
         Authenticator
@@ -832,11 +897,25 @@ function MfaVerify() {
       </label>
       <label>
         Authenticator code
-        <input name="code" required pattern="[0-9]{6}" />
+        <input
+          name="code"
+          required
+          pattern="[0-9]{6}"
+          inputMode="numeric"
+          autoComplete="one-time-code"
+          maxLength={6}
+        />
       </label>
-      {error && <p className="error-text">{error}</p>}
-      <button className="button" disabled={!s.authReady || !factors.length}>
-        Verify administrator
+      {error && (
+        <p className="error-text" role="alert">
+          {error}
+        </p>
+      )}
+      <button
+        className="button"
+        disabled={busy || !s.authReady || !factors.length}
+      >
+        {busy ? "Verifying…" : "Verify administrator"}
       </button>
     </form>
   );

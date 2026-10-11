@@ -108,6 +108,7 @@ beforeEach(() => {
     writes: [],
     calls: [],
     level: "aal1",
+    factors: [],
     providerError: null,
     user: null,
     siteIdentity: {
@@ -184,6 +185,9 @@ beforeEach(() => {
         return { data: { user: f.user }, error: null };
       },
       mfa: {
+        async listFactors() {
+          return { data: { totp: f.factors }, error: null };
+        },
         async getAuthenticatorAssuranceLevel() {
           return { data: { currentLevel: f.level } };
         },
@@ -368,6 +372,46 @@ function enableBootstrap() {
   f.env.ADMIN_BOOTSTRAP_USER_ID = userId;
   f.env.ADMIN_BOOTSTRAP_EMAIL = password.email;
 }
+
+test("signed-in customers can list only their own verified factors before first-admin activation", async () => {
+  enableBootstrap();
+  await post("login", password);
+  f.factors = [
+    {
+      id: "verified-factor",
+      status: "verified",
+      friendly_name: "My authenticator",
+      secret: "must-not-return",
+    },
+    { id: "pending-factor", status: "unverified", friendly_name: "Pending" },
+  ];
+  const response = await post("factors");
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), {
+    adminReady: false,
+    factors: [{ id: "verified-factor", name: "My authenticator" }],
+  });
+  assert.equal((await handlers.currentUser()).role, "customer");
+  await assert.rejects(handlers.requireUser(true), (e) => e.status === 403);
+});
+
+test("factor discovery rejects guests and Sites sessions", async () => {
+  assert.equal((await post("factors")).status, 401);
+  f.jar.set("inshop-site-session", "1");
+  assert.equal((await post("factors")).status, 403);
+});
+
+test("admin login detects missing enrollment and recognizes a completed MFA session", async () => {
+  enableBootstrap();
+  await post("login", password);
+  assert.deepEqual(await (await post("factors")).json(), {
+    adminReady: false,
+    factors: [],
+  });
+  f.level = "aal2";
+  assert.equal((await (await post("factors")).json()).adminReady, true);
+  assert.equal((await handlers.requireUser(true)).role, "admin");
+});
 
 test("bootstrap checks the current verified provider email rather than a stale stored email", async () => {
   enableBootstrap();
